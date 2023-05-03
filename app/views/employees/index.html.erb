@@ -1,0 +1,37 @@
+<%= link_to "New Employee", new_employee_path %>
+
+<h1>Employee List</h1>
+<table>
+  <tr>
+    <th>ID</th>
+    <th>F_Name</th>
+    <th>L_Name</th>
+    <th>DOB</th>
+    <th>Email</th>
+    <th>Address</th>
+    <th>Contact_num.</th>
+    <th>Designation</th>
+    <th>Hire_date</th>
+    <th>Resign_date</th>
+    <th>Salary</th>
+    <th>CTC</th>
+    <th>Bank_Account</th>
+  </tr>
+ <% @employees.each do |employee| %>
+  <tr>
+    <td><%= link_to employee.id, employee %></td>
+    <td><%= employee.f_name%></td>
+    <td><%= employee.l_name%></td>
+    <td><%= employee.dob%></td>
+    <td><%= employee.email%></td>
+    <td><%= employee.address%></td>
+    <td><%= employee.contact_no%></td>
+    <td><%= employee.designation%></td>
+    <td><%= employee.hire_date%></td>
+    <td><%= employee.resign_date%></td>
+    <td><%= employee.salary%></td>
+    <td><%= employee.ctc%></td>
+    <td><%= employee.bank_account_number%></td>
+  </tr>
+  <% end %>
+ </table>

@@ -1,0 +1,19 @@
+<%= link_to "New Department", new_department_path %>
+
+<h1>Department Table</h1>
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Dep_Name</th>
+    <th>NO. of Employees</th>
+
+  </tr>
+ <% @departments.each do |department| %>
+  <tr>
+    <td><%= link_to department.id, department %></td>
+    <td><%= department.dep_name%></td>
+    <td><%= department.num_of_employee%></td>
+
+  </tr>
+  <% end %>
+ </table>

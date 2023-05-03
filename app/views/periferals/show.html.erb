@@ -1,0 +1,41 @@
+
+<h1>Periferal</h1>
+<table>
+  <tr>
+    <th>id</th>
+    <th>name</th>
+    <th>description</th>
+    <th>quantity</th>
+    <th>assign_to</th>
+    <th>supplier_id</th>
+    <th>manufacture_id</th>
+    <th>delivery_date.</th>
+    <th>order_date</th>
+    <th>warranty_start_date</th>
+    <th>warranty_duration</th>
+
+  </tr>
+
+  <tr>
+    <td><%= @periferal.id %></td>
+    <td><%= @periferal.name%></td>
+    <td><%= @periferal.description%></td>
+    <td><%= @periferal.quantity%></td>
+    <td><%= @periferal.assign_to%></td>
+    <td><%= @periferal.supplier_id%></td>
+    <td><%= @periferal.manufacture_id%></td>
+    <td><%= @periferal.delivery_date%></td>
+    <td><%= @periferal.order_date%></td>
+    <td><%= @periferal.warranty_start_date%></td>
+    <td><%= @periferal.warranty_duration%></td>
+  </tr>
+  </tr>
+
+ </table>
+
+<%= link_to "Edit", edit_periferal_path(@periferal) %>
+<br>
+<%= link_to "Destroy", periferal_path(@periferal),
+    method: :delete,
+    data: { confirm: 'Are you sure?'}
+    %>

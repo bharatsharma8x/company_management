@@ -1,0 +1,17 @@
+<h1>New Department</h1>
+
+<%= form_with model: @department do |form| %>
+  <div>
+    <%= form.label :Dep_name %><br>
+    <%= form.text_field :dep_name %>
+  </div><br>
+
+  <div>
+    <%= form.label :Number_of_Employees %><br>
+    <%= form.text_field :num_of_employee %>
+  </div><br>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

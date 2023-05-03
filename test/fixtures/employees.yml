@@ -1,0 +1,29 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  f_name: MyString
+  l_name: MyString
+  dob: 2023-05-01
+  email: MyString
+  address: MyText
+  contact_no: 
+  designation: MyString
+  hire_date: 2023-05-01
+  resign_date: 2023-05-01
+  salary: 1
+  ctc: 1
+  bank_account_number: 
+
+two:
+  f_name: MyString
+  l_name: MyString
+  dob: 2023-05-01
+  email: MyString
+  address: MyText
+  contact_no: 
+  designation: MyString
+  hire_date: 2023-05-01
+  resign_date: 2023-05-01
+  salary: 1
+  ctc: 1
+  bank_account_number: 

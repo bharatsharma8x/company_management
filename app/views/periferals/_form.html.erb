@@ -1,0 +1,57 @@
+<h1>New Periferal</h1>
+
+<%= form_with model: @periferal do |form| %>
+  <div>
+    <%= form.label :name %><br>
+    <%= form.text_field :name %>
+  </div><br>
+
+ <div>
+    <%= form.label :description %><br>
+    <%= form.text_field :description %>
+  </div><br>
+
+   <div>
+    <%= form.label :quantity %><br>
+    <%= form.text_field :quantity %>
+  </div><br>
+
+ <div>
+    <%= form.label :assign_to %><br>
+    <%= form.text_field :assign_to %>
+  </div><br>
+
+ <div>
+    <%= form.label :supplier_id %><br>
+    <%= form.text_field :supplier_id %>
+  </div><br>
+
+   <div>
+    <%= form.label :manufacture_id %><br>
+    <%= form.text_field :manufacture_id %>
+  </div><br>
+
+ <div>
+    <%= form.label :delivery_date %><br>
+    <%= form.text_field :delivery_date %>
+  </div><br>
+
+ <div>
+    <%= form.label :order_date %><br>
+    <%= form.text_field :order_date %>
+  </div><br>
+
+ <div>
+    <%= form.label :warranty_start_date %><br>
+    <%= form.text_field :warranty_start_date %>
+  </div><br>
+
+  <div>
+    <%= form.label :warranty_duration %><br>
+    <%= form.text_field :warranty_duration %>
+  </div><br>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

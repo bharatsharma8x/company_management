@@ -93,5 +93,3 @@ production:
   database: company_management_production
   username: company_management
   password: <%= ENV['COMPANY_MANAGEMENT_DATABASE_PASSWORD'] %>
-
-

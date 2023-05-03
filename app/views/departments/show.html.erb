@@ -1,0 +1,23 @@
+<h1>Department List</h1>
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Dep_Name</th>
+    <th>NO. of Employees</th>
+
+  </tr>
+  <tr>
+
+    <td><%= @department.id%></td>
+    <td><%= @department.dep_name%></td>
+    <td><%= @department.num_of_employee%></td>
+
+  </tr>
+ </table>
+
+<%= link_to "Edit", edit_department_path(@department) %>
+<br>
+<%= link_to "Destroy", department_path(@department),
+    method: :delete,
+    data: { confirm: 'Are you sure?'}
+    %>

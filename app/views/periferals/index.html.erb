@@ -1,6 +1,8 @@
-<%= link_to "New Periferal", new_periferal_path %>
+<%= link_to "Back To Dashboard", root_path%> <br>
+
 
 <h1>Periferal List</h1>
+<%= link_to "New Periferal", new_periferal_path %><br><br>
 <table>
   <tr>
     <th>id</th>
@@ -14,21 +16,10 @@
     <th>order_date</th>
     <th>warranty_start_date</th>
     <th>warranty_duration</th>
+     <th>EDIT</th>
+    <th>DELETE</th>
 
   </tr>
- <% @periferals.each do |periferal| %>
-  <tr>
-    <td><%= link_to periferal.id, periferal %></td>
-    <td><%= periferal.name%></td>
-    <td><%= periferal.description%></td>
-    <td><%= periferal.quantity%></td>
-    <td><%= periferal.assign_to%></td>
-    <td><%= periferal.supplier_id%></td>
-    <td><%= periferal.manufacture_id%></td>
-    <td><%= periferal.delivery_date%></td>
-    <td><%= periferal.order_date%></td>
-    <td><%= periferal.warranty_start_date%></td>
-    <td><%= periferal.warranty_duration%></td>
-  </tr>
-  <% end %>
+  <%= render(@periferals) || "There are no products available." %>
+
  </table>

@@ -1,4 +1,5 @@
-
+<%= link_to "Back To Dashboard", root_path%> <br>
+<%= link_to "Back", "/periferals"%> <br>
 <h1>Periferal</h1>
 <table>
   <tr>
@@ -13,6 +14,9 @@
     <th>order_date</th>
     <th>warranty_start_date</th>
     <th>warranty_duration</th>
+     <th>EDIT</th>
+    <th>DELETE</th>
+
 
   </tr>
 
@@ -28,14 +32,11 @@
     <td><%= @periferal.order_date%></td>
     <td><%= @periferal.warranty_start_date%></td>
     <td><%= @periferal.warranty_duration%></td>
-  </tr>
-  </tr>
-
- </table>
-
-<%= link_to "Edit", edit_periferal_path(@periferal) %>
-<br>
-<%= link_to "Destroy", periferal_path(@periferal),
+    <td><%= link_to "Edit", "/periferals/#{@periferal.id}/edit" %></td>
+    <td><%= link_to "Destroy", "/periferals/#{@periferal.id}",
     method: :delete,
     data: { confirm: 'Are you sure?'}
-    %>
+    %></td>
+  </tr>
+  </tr>
+ </table>

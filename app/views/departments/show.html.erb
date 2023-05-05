@@ -1,23 +1,23 @@
+<%= link_to "Back To Dashboard", root_path%> <br>
+<%= link_to "Back", "/departments"%> <br>
 <h1>Department List</h1>
 <table>
   <tr>
     <th>ID</th>
     <th>Dep_Name</th>
     <th>NO. of Employees</th>
-
+    <th>EDIT</th>
+    <th>DELETE</th>
   </tr>
   <tr>
-
     <td><%= @department.id%></td>
     <td><%= @department.dep_name%></td>
     <td><%= @department.num_of_employee%></td>
+    <td><%= link_to "Edit", "/departments/#{@department.id}/edit" %></td>
+    <td><%= link_to "Destroy", "/departments/#{@department.id}",
+    method: :delete,
+    data: { confirm: 'Are you sure?'}
+    %></td>
 
   </tr>
  </table>
-
-<%= link_to "Edit", edit_department_path(@department) %>
-<br>
-<%= link_to "Destroy", department_path(@department),
-    method: :delete,
-    data: { confirm: 'Are you sure?'}
-    %>

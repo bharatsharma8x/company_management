@@ -1,3 +1,5 @@
+<%= link_to "Back To Dashboard", root_path%> <br>
+<%= link_to "Back", "/employees"%> <br>
 <h1>Employee List</h1>
 <table>
   <tr>
@@ -14,6 +16,8 @@
     <th>Salary</th>
     <th>CTC</th>
     <th>Bank_Account</th>
+      <th>EDIT</th>
+    <th>DELETE</th>
   </tr>
 
   <tr>
@@ -30,13 +34,10 @@
     <td><%= @employee.salary%></td>
     <td><%= @employee.ctc%></td>
     <td><%= @employee.bank_account_number%></td>
-  </tr>
-
- </table>
-
-<%= link_to "Edit", edit_employee_path(@employee) %>
-<br>
-<%= link_to "Destroy", employee_path(@employee),
+    <td><%= link_to "Edit", "/employees/#{@employee.id}/edit" %></td>
+    <td><%= link_to "Destroy", "/employees/#{@employee.id}",
     method: :delete,
     data: { confirm: 'Are you sure?'}
-    %>
+    %></td>
+  </tr>
+ </table>

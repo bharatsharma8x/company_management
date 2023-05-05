@@ -1,10 +1,11 @@
 class PeriferalsController < ApplicationController
+  before_action :set_periferal, only: %i[ show edit update destroy ]
+
   def index
     @periferals = Periferal.all
   end
 
   def show
-    @periferal = Periferal.find(params[:id])
   end
 
   def new
@@ -22,12 +23,9 @@ class PeriferalsController < ApplicationController
   end
 
   def edit
-    @periferal = Periferal.find(params[:id])
   end
 
   def update
-    @periferal = Periferal.find(params[:id])
-
     if @periferal.update(periferal_params)
       redirect_to @periferal
     else
@@ -36,15 +34,18 @@ class PeriferalsController < ApplicationController
   end
 
   def destroy
-    @periferal = Periferal.find(params[:id])
     @periferal.destroy
 
-    redirect_to root_path, status: :see_other
+    redirect_to "/periferals", status: :see_other
   end
 
   private
-    def periferal_params
-      params.require(:periferal).permit(:name, :description, :quantity, :assign_to, :supplier_id, :manufacture_id, :delivery_date, :order_date, :warranty_start_date, :warranty_duration)
-    end
+  def set_periferal
+    @periferal = Periferal.find(params[:id])
+  end
+
+  def periferal_params
+    params.require(:periferal).permit(:name, :description, :quantity, :assign_to, :supplier_id, :manufacture_id, :delivery_date, :order_date, :warranty_start_date, :warranty_duration)
+  end
 
 end

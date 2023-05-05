@@ -1,0 +1,18 @@
+  <tr>
+    <td><%= periferal.id%></td>
+    <td><%= link_to periferal.name, periferal %></td>
+    <td><%= periferal.description%></td>
+    <td><%= periferal.quantity%></td>
+    <td><%= periferal.assign_to%></td>
+    <td><%= periferal.supplier_id%></td>
+    <td><%= periferal.manufacture_id%></td>
+    <td><%= periferal.delivery_date%></td>
+    <td><%= periferal.order_date%></td>
+    <td><%= periferal.warranty_start_date%></td>
+    <td><%= periferal.warranty_duration%></td>
+    <td><%= link_to "Edit", "/periferals/#{periferal.id}/edit" %></td>
+    <td><%= link_to "Destroy", "/periferals/#{periferal.id}",
+    method: :delete,
+    data: { confirm: 'Are you sure?'}
+    %></td>
+  </tr>

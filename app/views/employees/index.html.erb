@@ -1,6 +1,6 @@
-<%= link_to "New Employee", new_employee_path %>
-
+<%= link_to "Back To Dashboard", root_path%> <br>
 <h1>Employee List</h1>
+<%= link_to "New Employee", new_employee_path %><br><br>
 <table>
   <tr>
     <th>ID</th>
@@ -16,22 +16,8 @@
     <th>Salary</th>
     <th>CTC</th>
     <th>Bank_Account</th>
+    <th>EDIT</th>
+    <th>DELETE</th>
   </tr>
- <% @employees.each do |employee| %>
-  <tr>
-    <td><%= link_to employee.id, employee %></td>
-    <td><%= employee.f_name%></td>
-    <td><%= employee.l_name%></td>
-    <td><%= employee.dob%></td>
-    <td><%= employee.email%></td>
-    <td><%= employee.address%></td>
-    <td><%= employee.contact_no%></td>
-    <td><%= employee.designation%></td>
-    <td><%= employee.hire_date%></td>
-    <td><%= employee.resign_date%></td>
-    <td><%= employee.salary%></td>
-    <td><%= employee.ctc%></td>
-    <td><%= employee.bank_account_number%></td>
-  </tr>
-  <% end %>
+  <%= render(@employees) || "There are no products available." %>
  </table>

@@ -1,7 +1,11 @@
-<%= link_to "Back To Dashboard", root_path%> <br>
+<div class="d-flex align-items-center justify-content-center">
 <h1>Employee List</h1>
+</div>
+
 <%= link_to "New Employee", new_employee_path %><br><br>
-<table>
+
+<div class="table-responsive">
+<table class="table">
   <tr>
     <th>ID</th>
     <th>F_Name</th>
@@ -12,12 +16,13 @@
     <th>Contact_num.</th>
     <th>Designation</th>
     <th>Hire_date</th>
-    <th>Resign_date</th>
     <th>Salary</th>
     <th>CTC</th>
+    <th>Department</th>
     <th>Bank_Account</th>
     <th>EDIT</th>
     <th>DELETE</th>
   </tr>
   <%= render(@employees) || "There are no products available." %>
  </table>
+</div>

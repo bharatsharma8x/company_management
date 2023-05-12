@@ -6,47 +6,52 @@
 
  <div>
     <%= form.label :description %><br>
-    <%= form.text_field :description %>
-  </div><br>
-
-   <div>
-    <%= form.label :quantity %><br>
-    <%= form.text_field :quantity %>
+    <%= form.text_area :description %>
   </div><br>
 
  <div>
-    <%= form.label :assign_to %><br>
-    <%= form.text_field :assign_to %>
-  </div><br>
-
- <div>
-    <%= form.label :supplier_id %><br>
-    <%= form.text_field :supplier_id %>
+    <%= form.label "Supplier id" %><br>
+    <%= form.number_field :supplier_id, min: 0 %>
   </div><br>
 
    <div>
-    <%= form.label :manufacture_id %><br>
-    <%= form.text_field :manufacture_id %>
+    <%= form.label "Manufacturer id" %><br>
+    <%= form.number_field :manufacture_id, min: 0 %>
   </div><br>
 
  <div>
     <%= form.label :delivery_date %><br>
-    <%= form.text_field :delivery_date %>
+    <%= form.date_field :delivery_date %>
   </div><br>
 
  <div>
     <%= form.label :order_date %><br>
-    <%= form.text_field :order_date %>
+    <%= form.date_field :order_date %>
+  </div><br>
+
+  <div>
+    <%= form.label :assign_to_Employee %><br>
+     <%= form.collection_select(:employee_id, Employee.all, :id, :f_name, prompt: true)%>
+  </div><br>
+
+  <div>
+    <%= form.label :assign_to_Department %><br>
+     <%= form.collection_select(:department_id, Department.all, :id, :dep_name, prompt: true)%>
   </div><br>
 
  <div>
     <%= form.label :warranty_start_date %><br>
-    <%= form.text_field :warranty_start_date %>
+    <%= form.number_field :warranty_start_date, min: 0 %>
+  </div><br>
+
+   <div>
+    <%= form.label :bill %><br>
+    <%= form.file_field :bill %>
   </div><br>
 
   <div>
     <%= form.label :warranty_duration %><br>
-    <%= form.text_field :warranty_duration %>
+    <%= form.number_field :warranty_duration, min: 0%>
   </div><br>
 
   <div>

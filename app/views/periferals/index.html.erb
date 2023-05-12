@@ -1,25 +1,24 @@
-<%= link_to "Back To Dashboard", root_path%> <br>
-
-
+<div class="d-flex align-items-center justify-content-center">
 <h1>Periferal List</h1>
+</div>
 <%= link_to "New Periferal", new_periferal_path %><br><br>
-<table>
+<div class="table-responsive">
+<table class="table">
   <tr>
     <th>id</th>
     <th>name</th>
     <th>description</th>
-    <th>quantity</th>
-    <th>assign_to</th>
     <th>supplier_id</th>
     <th>manufacture_id</th>
     <th>delivery_date.</th>
     <th>order_date</th>
+    <th>assign_to_Dep</th>
+    <th>assign_to_Emp</th>
     <th>warranty_start_date</th>
     <th>warranty_duration</th>
-     <th>EDIT</th>
+    <th>EDIT</th>
     <th>DELETE</th>
-
   </tr>
-  <%= render(@periferals) || "There are no products available." %>
-
+  <%= render(@periferals) || "**There are no products available." %>
  </table>
+</div>

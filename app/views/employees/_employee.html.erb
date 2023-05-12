@@ -1,20 +1,25 @@
-  <tr>
-    <td><%= employee.id%></td>
-    <td><%= link_to employee.f_name, employee %></td>
-    <td><%= employee.l_name%></td>
-    <td><%= employee.dob%></td>
-    <td><%= employee.email%></td>
-    <td><%= employee.address%></td>
-    <td><%= employee.contact_no%></td>
-    <td><%= employee.designation%></td>
-    <td><%= employee.hire_date%></td>
-    <td><%= employee.resign_date%></td>
-    <td><%= employee.salary%></td>
-    <td><%= employee.ctc%></td>
-    <td><%= employee.bank_account_number%></td>
-    <td><%= link_to "Edit", "/employees/#{employee.id}/edit" %></td>
-    <td><%= link_to "Destroy", "/employees/#{employee.id}",
-    method: :delete,
-    data: { confirm: 'Are you sure?'}
-    %></td>
-  </tr>
+<tr>
+  <td><%= employee.id%></td>
+  <td><%= link_to employee.f_name, employee %></td>
+  <td><%= employee.l_name%></td>
+  <td><%= employee.dob%></td>
+  <td><%= employee.email%></td>
+  <td><%= employee.address%></td>
+  <td><%= employee.contact_no%></td>
+  <td><%= employee.designation%></td>
+  <td><%= employee.hire_date%></td>
+  <td><%= employee.salary%></td>
+  <td><%= employee.ctc%></td>
+  <td>
+    <%# check try method and safe naviagation operator, rubocop gem %>
+    <% if employee.department %>
+      <%= employee.department.dep_name %>
+    <% end %>
+  </td>
+  <td><%= employee.bank_account_number%></td>
+  <td><%= link_to "Edit", edit_employee_path(employee.id) %></td>
+  <td><%= link_to "Destroy", employee_path(employee.id),
+   method: :delete,
+  data: { confirm: 'Are you sure?'}
+  %></td>
+</tr>

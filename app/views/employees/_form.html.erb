@@ -21,12 +21,12 @@
 
     <div>
     <%= form.label :address %><br>
-    <%= form.text_field :address %>
+    <%= form.text_area :address %>
   </div><br>
 
   <div>
     <%= form.label :contact_no %><br>
-    <%= form.telephone_field :contact_no %>
+    <%= form.telephone_field :contact_no, min: 0 %>
   </div><br>
 
   <div>
@@ -39,24 +39,29 @@
     <%= form.date_field :hire_date %>
   </div><br>
 
-    <div>
-    <%= form.label :resign_date %><br>
-    <%= form.date_field :resign_date %>
-  </div><br>
-
   <div>
     <%= form.label :salary %><br>
-    <%= form.number_field :salary %>
+    <%= form.number_field :salary, min: 0 %>
   </div><br>
 
   <div>
     <%= form.label :ctc %><br>
-    <%= form.number_field :ctc %>
+    <%= form.number_field :ctc, min: 0 %>
   </div><br>
 
   <div>
     <%= form.label :bank_account_number %><br>
-    <%= form.number_field :bank_account_number %>
+    <%= form.number_field :bank_account_number, min: 0 %>
+  </div><br>
+
+  <div>
+   <%= form.label :Department %><br>
+   <%= form.collection_select(:department_id, Department.all, :id, :dep_name, prompt: true)%>
+  </div>
+
+  <div>
+    <%= form.label :resume %><br>
+    <%= form.file_field :resume %>
   </div><br>
 
   <div>

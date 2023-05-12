@@ -2,9 +2,10 @@
     <td><%= department.id%></td>
     <td><%= link_to department.dep_name, department %></td>
     <td><%= department.num_of_employee%></td>
-    <td><%= link_to "Edit", "/departments/#{department.id}/edit" %></td>
-    <td><%= link_to "Destroy", "/departments/#{department.id}",
+    <td><%= link_to "Edit", edit_department_path(department.id) %></td>
+    <td><%= link_to "Destroy", department_path(department.id),
     method: :delete,
     data: { confirm: 'Are you sure?'}
     %></td>
 </tr>
+

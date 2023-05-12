@@ -3,10 +3,11 @@ class DepartmentsController < ApplicationController
 
   def index
     @departments = Department.all
+    # byebug
+    # @department.find_by_name("hr")
   end
 
   def show
-    # @department = Department.find(params[:id])
   end
 
   def new
@@ -24,12 +25,9 @@ class DepartmentsController < ApplicationController
   end
 
   def edit
-    # @department = Department.find(params[:id])
   end
 
   def update
-    # @department = Department.find(params[:id])
-
     if @department.update(department_params)
       redirect_to @department
     else
@@ -38,7 +36,6 @@ class DepartmentsController < ApplicationController
   end
 
   def destroy
-    # @department = Department.find(params[:id])
     @department.destroy
 
     redirect_to "/departments", status: :see_other

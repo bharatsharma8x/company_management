@@ -10,10 +10,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_05_03_082358) do
+ActiveRecord::Schema.define(version: 2023_05_11_073319) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "active_storage_attachments", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "record_type", null: false
+    t.bigint "record_id", null: false
+    t.bigint "blob_id", null: false
+    t.datetime "created_at", null: false
+    t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
+    t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
+  end
+
+  create_table "active_storage_blobs", force: :cascade do |t|
+    t.string "key", null: false
+    t.string "filename", null: false
+    t.string "content_type"
+    t.text "metadata"
+    t.bigint "byte_size", null: false
+    t.string "checksum", null: false
+    t.datetime "created_at", null: false
+    t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
 
   create_table "departments", force: :cascade do |t|
     t.string "dep_name"
@@ -31,27 +52,34 @@ ActiveRecord::Schema.define(version: 2023_05_03_082358) do
     t.bigint "contact_no"
     t.string "designation"
     t.date "hire_date"
-    t.date "resign_date"
     t.integer "salary"
     t.integer "ctc"
     t.bigint "bank_account_number"
+    t.bigint "department_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["department_id"], name: "index_employees_on_department_id"
   end
 
   create_table "periferals", force: :cascade do |t|
     t.string "name"
     t.text "description"
-    t.integer "quantity"
-    t.string "assign_to"
     t.integer "supplier_id"
     t.integer "manufacture_id"
     t.date "delivery_date"
     t.date "order_date"
     t.date "warranty_start_date"
     t.integer "warranty_duration"
+    t.bigint "department_id"
+    t.bigint "employee_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["department_id"], name: "index_periferals_on_department_id"
+    t.index ["employee_id"], name: "index_periferals_on_employee_id"
   end
 
+  add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "employees", "departments"
+  add_foreign_key "periferals", "departments"
+  add_foreign_key "periferals", "employees"
 end

@@ -1,42 +1,51 @@
-<%= link_to "Back To Dashboard", root_path%> <br>
-<%= link_to "Back", "/periferals"%> <br>
+<%= link_to "Back", periferals_path %> <br>
 <h1>Periferal</h1>
 <table>
   <tr>
     <th>id</th>
     <th>name</th>
     <th>description</th>
-    <th>quantity</th>
-    <th>assign_to</th>
     <th>supplier_id</th>
     <th>manufacture_id</th>
     <th>delivery_date.</th>
     <th>order_date</th>
+    <th>assign_to_Dep</th>
+    <th>assign_to_Emp</th>
     <th>warranty_start_date</th>
     <th>warranty_duration</th>
      <th>EDIT</th>
     <th>DELETE</th>
-
-
   </tr>
 
   <tr>
     <td><%= @periferal.id %></td>
     <td><%= @periferal.name%></td>
     <td><%= @periferal.description%></td>
-    <td><%= @periferal.quantity%></td>
-    <td><%= @periferal.assign_to%></td>
     <td><%= @periferal.supplier_id%></td>
     <td><%= @periferal.manufacture_id%></td>
     <td><%= @periferal.delivery_date%></td>
     <td><%= @periferal.order_date%></td>
+     <td><% if @periferal.department %>
+         <%= @periferal.department.dep_name %>
+         <% end %>
+    </td>
+     <td><% if @periferal.employee %>
+         <%= @periferal.employee.f_name %>
+         <% end %>
+    </td>
     <td><%= @periferal.warranty_start_date%></td>
     <td><%= @periferal.warranty_duration%></td>
-    <td><%= link_to "Edit", "/periferals/#{@periferal.id}/edit" %></td>
-    <td><%= link_to "Destroy", "/periferals/#{@periferal.id}",
+    <td><%= link_to "Edit", edit_periferal_path(@periferal.id) %></td>
+    <td><%= link_to "Destroy", periferal_path(@periferal.id),
     method: :delete,
     data: { confirm: 'Are you sure?'}
     %></td>
   </tr>
   </tr>
  </table>
+
+  <div>
+    <%if @periferal.bill.attached?%>
+        <%= image_tag @periferal.bill, :style => "width: 300px; height:300px" %>
+    <%end%>
+  </div>

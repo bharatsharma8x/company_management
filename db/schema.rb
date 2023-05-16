@@ -37,8 +37,8 @@ ActiveRecord::Schema.define(version: 2023_05_11_073319) do
   end
 
   create_table "departments", force: :cascade do |t|
-    t.string "dep_name"
-    t.integer "num_of_employee"
+    t.string "department_name"
+    t.integer "employee_count"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

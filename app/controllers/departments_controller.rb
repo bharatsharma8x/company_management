@@ -37,7 +37,6 @@ class DepartmentsController < ApplicationController
 
   def destroy
     @department.destroy
-
     redirect_to "/departments", status: :see_other
   end
 
@@ -48,7 +47,7 @@ class DepartmentsController < ApplicationController
   end
 
   def department_params
-    params.require(:department).permit(:dep_name, :num_of_employee)
+    params.require(:department).permit(:department_name)
   end
 
 end

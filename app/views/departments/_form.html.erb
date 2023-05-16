@@ -1,15 +1,14 @@
-<%= form_with model: @department do |form| %>
+<%= form_with model: @department, local: true do |form| %>
   <div>
-    <%= form.label :Dep_name %><br>
-    <%= form.text_field :dep_name %>
-  </div><br>
-
-  <div>
-    <%= form.label :Number_of_Employees %><br>
-    <%= form.text_field :num_of_employee %>
+    <%= form.label "Department Name" %><br>
+    <%= form.text_field :department_name %>
+    <% @department.errors.full_messages_for(:department_name).each do |message| %>
+      <div style="color:red"><%= message %></div>
+    <% end %>
   </div><br>
 
   <div>
     <%= form.submit %>
+    <%= submit_tag("Reset", { :name => 'reset', :id => 'reset_button', :type => "reset" }) %>
   </div>
 <% end %>

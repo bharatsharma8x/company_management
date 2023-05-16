@@ -1,8 +1,8 @@
 class CreateDepartments < ActiveRecord::Migration[5.2]
   def change
     create_table :departments do |t|
-      t.string :dep_name
-      t.integer :num_of_employee
+      t.string :department_name
+      t.integer :employee_count
       t.timestamps
     end
   end

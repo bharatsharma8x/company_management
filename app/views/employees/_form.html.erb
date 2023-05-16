@@ -1,11 +1,12 @@
-<%= form_with model: @employee do |form| %>
+<%= form_with model: @employee, local: true do |form| %>
+
   <div>
-    <%= form.label :f_name %><br>
+    <%= form.label "First name" %><br>
     <%= form.text_field :f_name %>
   </div><br>
 
   <div>
-    <%= form.label :l_name %><br>
+    <%= form.label "Last name" %><br>
     <%= form.text_field :l_name %>
   </div><br>
 
@@ -56,7 +57,7 @@
 
   <div>
    <%= form.label :Department %><br>
-   <%= form.collection_select(:department_id, Department.all, :id, :dep_name, prompt: true)%>
+   <%= form.collection_select(:department_id, Department.all, :id, :department_name, prompt: true)%>
   </div>
 
   <div>
@@ -67,4 +68,5 @@
   <div>
     <%= form.submit %>
   </div>
+  <%= submit_tag("Reset", { :name => 'reset', :id => 'reset_button', :type => "reset" }) %>
 <% end %>

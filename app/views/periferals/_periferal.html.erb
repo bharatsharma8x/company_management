@@ -1,13 +1,8 @@
   <tr>
     <td><%= periferal.id%></td>
     <td><%= link_to periferal.name, periferal %></td>
-    <td><%= periferal.description%></td>
-    <td><%= periferal.supplier_id%></td>
-    <td><%= periferal.manufacture_id%></td>
-    <td><%= periferal.delivery_date%></td>
-    <td><%= periferal.order_date%></td>
     <td><% if periferal.department %>
-         <%= periferal.department.dep_name %>
+         <%= periferal.department.department_name %>
          <% end %>
     </td>
      <td><% if periferal.employee %>

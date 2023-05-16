@@ -1,12 +1,18 @@
-<%= form_with model: @periferal do |form| %>
+<%= form_with model: @periferal, local: true do |form| %>
   <div>
     <%= form.label :name %><br>
     <%= form.text_field :name %>
+    <% @periferal.errors.full_messages_for(:name).each do |message| %>
+      <div style="color:red"><%= message %></div>
+    <% end %>
   </div><br>
 
  <div>
     <%= form.label :description %><br>
     <%= form.text_area :description %>
+    <% @periferal.errors.full_messages_for(:description).each do |message| %>
+      <div style="color:red"><%= message %></div>
+    <% end %>
   </div><br>
 
  <div>
@@ -36,7 +42,7 @@
 
   <div>
     <%= form.label :assign_to_Department %><br>
-     <%= form.collection_select(:department_id, Department.all, :id, :dep_name, prompt: true)%>
+     <%= form.collection_select(:department_id, Department.all, :id, :department_name, prompt: true)%>
   </div><br>
 
  <div>
@@ -57,4 +63,5 @@
   <div>
     <%= form.submit %>
   </div>
+  <%= submit_tag("Reset", { :name => 'reset', :id => 'reset_button', :type => "reset" }) %>
 <% end %>

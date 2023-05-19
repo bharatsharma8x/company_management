@@ -9,7 +9,9 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
     # get "/employees" , to: "employees#index"
     root "home#index"
-    resources :employees
+    resources :employees do
+      resources :bank_accounts
+    end
     resources :departments
     resources :periferals
 end

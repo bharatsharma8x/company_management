@@ -3,56 +3,89 @@
   <div>
     <%= form.label "First name" %><br>
     <%= form.text_field :f_name %>
+    <% @employee.errors.full_messages_for(:f_name).each do |message| %>
+      <div style="color:red"><%= message %></div>
+    <% end %>
   </div><br>
 
   <div>
     <%= form.label "Last name" %><br>
     <%= form.text_field :l_name %>
+    <% @employee.errors.full_messages_for(:l_name).each do |message| %>
+      <div style="color:red"><%= message %></div>
+    <% end %>
   </div><br>
 
   <div>
     <%= form.label :dob %><br>
     <%= form.date_field :dob %>
+    <% @employee.errors.full_messages_for(:dob).each do |message| %>
+      <div style="color:red"><%= message %></div>
+    <% end %>
   </div><br>
 
   <div>
     <%= form.label :email %><br>
     <%= form.email_field :email %>
+    <% @employee.errors.full_messages_for(:email).each do |message| %>
+      <div style="color:red"><%= message %></div>
+    <% end %>
   </div><br>
 
     <div>
     <%= form.label :address %><br>
     <%= form.text_area :address %>
+    <% @employee.errors.full_messages_for(:address).each do |message| %>
+      <div style="color:red"><%= message %></div>
+    <% end %>
   </div><br>
 
   <div>
     <%= form.label :contact_no %><br>
     <%= form.telephone_field :contact_no, min: 0 %>
+    <% @employee.errors.full_messages_for(:contact_no).each do |message| %>
+      <div style="color:red"><%= message %></div>
+    <% end %>
   </div><br>
 
   <div>
     <%= form.label :designation %><br>
     <%= form.text_field :designation %>
+    <% @employee.errors.full_messages_for(:designation).each do |message| %>
+      <div style="color:red"><%= message %></div>
+    <% end %>
   </div><br>
 
   <div>
     <%= form.label :hire_date %><br>
     <%= form.date_field :hire_date %>
+    <% @employee.errors.full_messages_for(:hire_date).each do |message| %>
+      <div style="color:red"><%= message %></div>
+    <% end %>
+  </div><br>
+
+  <div>
+    <%= form.label :left_date %><br>
+    <%= form.date_field :left_date %>
+    <% @employee.errors.full_messages_for(:left_date).each do |message| %>
+      <div style="color:red"><%= message %></div>
+    <% end %>
   </div><br>
 
   <div>
     <%= form.label :salary %><br>
     <%= form.number_field :salary, min: 0 %>
+    <% @employee.errors.full_messages_for(:salary).each do |message| %>
+      <div style="color:red"><%= message %></div>
+    <% end %>
   </div><br>
 
   <div>
     <%= form.label :ctc %><br>
     <%= form.number_field :ctc, min: 0 %>
-  </div><br>
-
-  <div>
-    <%= form.label :bank_account_number %><br>
-    <%= form.number_field :bank_account_number, min: 0 %>
+    <% @employee.errors.full_messages_for(:ctc).each do |message| %>
+      <div style="color:red"><%= message %></div>
+    <% end %>
   </div><br>
 
   <div>
@@ -65,8 +98,30 @@
     <%= form.file_field :resume %>
   </div><br>
 
+  <%= form.fields_for :bank_account do |bd| %>
+    <%= bd.label :bank_name %><br>
+    <%= bd.text_field :bank_name %>
+    <% @employee.bank_account.errors.full_messages_for(:bank_name).each do |message| %>
+      <div style="color:red"><%= message %></div>
+    <% end %>
+    <br>
+    <%= bd.label :ifsc_code %><br>
+    <%= bd.text_field :ifsc_code %>
+    <% @employee.bank_account.errors.full_messages_for(:ifsc_code).each do |message| %>
+      <div style="color:red"><%= message %></div>
+    <% end %>
+    <br>
+    <%= bd.label :account_number %><br>
+    <%= bd.text_field :account_number %>
+    <% @employee.bank_account.errors.full_messages_for(:account_number).each do |message| %>
+      <div style="color:red"><%= message %></div>
+    <% end %>
+  <% end %>
+    <br>
+
   <div>
     <%= form.submit %>
   </div>
+
   <%= submit_tag("Reset", { :name => 'reset', :id => 'reset_button', :type => "reset" }) %>
 <% end %>

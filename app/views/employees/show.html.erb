@@ -43,6 +43,12 @@
        </p>
 
         <p>
+       <strong>left date: </strong>
+       <%= @employee.left_date %>
+       </p>
+
+
+        <p>
        <strong>salary: </strong>
        <%= @employee.salary %>
        </p>
@@ -59,10 +65,21 @@
          <% end %>
        </p>
 
-         <p>
-       <strong>Bank Account Number: </strong>
-       <%= @employee.bank_account_number %>
+        <p>
+       <strong>Bank_name: </strong>
+       <%= @employee.bank_account.bank_name %>
        </p>
+
+       <p>
+       <strong>Ifsc_code: </strong>
+         <%= @employee.bank_account.ifsc_code %>
+       </p>
+
+       <p>
+       <strong>Account_number: </strong>
+        <%= @employee.bank_account.account_number %>
+       </p>
+
   </div>
       <div class="col-sm">
 

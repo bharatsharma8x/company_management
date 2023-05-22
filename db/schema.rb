@@ -74,12 +74,13 @@ ActiveRecord::Schema.define(version: 2023_05_16_102815) do
   create_table "periferals", force: :cascade do |t|
     t.string "name"
     t.text "description"
-    t.integer "supplier_id"
-    t.integer "manufacture_id"
-    t.date "delivery_date"
-    t.date "order_date"
+    t.string "category"
+    t.date "purchase_date"
+    t.integer "purchase_cost"
+    t.string "condition"
     t.date "warranty_start_date"
-    t.integer "warranty_duration"
+    t.integer "warranty_duration_months"
+    t.date "warranty_end_date"
     t.bigint "department_id"
     t.bigint "employee_id"
     t.datetime "created_at", null: false

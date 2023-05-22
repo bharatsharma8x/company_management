@@ -36,8 +36,12 @@ class DepartmentsController < ApplicationController
   end
 
   def destroy
-    @department.destroy
-    redirect_to "/departments", status: :see_other
+    begin
+      @department.destroy
+      redirect_to "/departments", status: :see_other
+    rescue StandardError => e
+      puts e
+    end
   end
 
   private

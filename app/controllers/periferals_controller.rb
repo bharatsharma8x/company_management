@@ -2,7 +2,7 @@ class PeriferalsController < ApplicationController
   before_action :set_periferal, only: %i[ show edit update destroy ]
 
   def index
-    @periferals = Periferal.all
+      @periferals = Periferal.all
   end
 
   def show
@@ -45,7 +45,7 @@ class PeriferalsController < ApplicationController
   end
 
   def periferal_params
-    params.require(:periferal).permit(:name, :description, :supplier_id, :manufacture_id, :delivery_date, :order_date, :department_id, :employee_id, :warranty_start_date, :warranty_duration, :bill)
+    params.require(:periferal).permit(:name, :description, :category, :purchase_date, :purchase_cost, :condition, :department_id, :employee_id, :warranty_start_date, :warranty_duration_months, :bill)
   end
 
 end

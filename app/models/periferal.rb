@@ -2,5 +2,15 @@ class Periferal < ApplicationRecord
   belongs_to :department, optional: true
   belongs_to :employee, optional: true
   has_one_attached :bill
-  validates :name, :description , presence: true
+
+  validates :name, :purchase_date, :purchase_cost, presence: true
+
+  before_save :calculate_warranty_end_date
+
+  private
+  def calculate_warranty_end_date
+    if warranty_duration_months.present?
+      self.warranty_end_date = warranty_start_date + warranty_duration_months.to_i.months
+    end
+  end
 end

@@ -1,0 +1,34 @@
+<%= link_to "Back", allocates_path %> <br>
+<div class="table-responsive">
+<table class="table">
+  <tr>
+    <th>ID</th>
+    <th>Employee</th>
+    <th>Periferal</th>
+    <th>From</th>
+    <th>to</th>
+    <th>EDIT</th>
+    <th>DELETE</th>
+  </tr>
+  <tr>
+    <td><%= @allocate.id%></td>
+    <td>
+      <% if @allocate.employee %>
+        <%= @allocate.employee.f_name %>
+      <% end %>
+    </td>
+    <td>
+      <% if @allocate.periferal %>
+        <%= @allocate.periferal.name %>
+      <% end %>
+    </td>
+    <td><%= @allocate.allocate_from%></td>
+    <td><%= @allocate.allocate_to%></td>
+    <td><%= link_to "Edit", edit_allocate_path(@allocate.id) %></td>
+    <td><%= link_to "Destroy", allocate_path(@allocate.id),
+      method: :delete,
+    data: { confirm: 'Are you sure?'}
+    %></td>
+  </tr>
+ </table>
+</div>

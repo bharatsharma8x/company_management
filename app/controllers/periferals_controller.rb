@@ -45,7 +45,7 @@ class PeriferalsController < ApplicationController
   end
 
   def periferal_params
-    params.require(:periferal).permit(:name, :description, :category, :purchase_date, :purchase_cost, :condition, :department_id, :employee_id, :warranty_start_date, :warranty_duration_months, :bill)
+    params.require(:periferal).permit(:name, :description, :category, :purchase_date, :purchase_cost, :condition, :warranty_start_date, :warranty_duration_months, :bill)
   end
 
 end

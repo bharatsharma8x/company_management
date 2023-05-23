@@ -1,4 +1,5 @@
 class Employee < ApplicationRecord
+  has_many :allocates
   belongs_to :department
   has_many :periferals
   has_one_attached :resume

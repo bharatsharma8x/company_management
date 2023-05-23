@@ -47,16 +47,6 @@
     <% end %>
   </div><br>
 
-  <div>
-    <%= form.label :assign_to_Employee %><br>
-     <%= form.collection_select(:employee_id, Employee.all, :id, :f_name, prompt: true)%>
-  </div><br>
-
-  <div>
-    <%= form.label :assign_to_Department %><br>
-     <%= form.collection_select(:department_id, Department.all, :id, :department_name, prompt: true)%>
-  </div><br>
-
  <div>
     <%= form.label :warranty_start_date %><br>
     <%= form.date_field :warranty_start_date %>

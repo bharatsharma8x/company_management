@@ -1,0 +1,2 @@
+module AllocatesHelper
+end

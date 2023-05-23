@@ -1,16 +1,9 @@
   <tr>
     <td><%= periferal.id%></td>
     <td><%= link_to periferal.name, periferal %></td>
-    <td><% if periferal.department %>
-         <%= periferal.department.department_name %>
-         <% end %>
-    </td>
-     <td><% if periferal.employee %>
-         <%= periferal.employee.f_name %>
-         <% end %>
-    </td>
+    <td><%= periferal.category%></td>
     <td><%= periferal.warranty_start_date%></td>
-    <td><%= periferal.warranty_duration_months%></td>
+    <td><%= periferal.warranty_end_date%></td>
     <td><%= link_to "Edit", edit_periferal_path(periferal.id) %></td>
     <td><%= link_to "Destroy", periferal_path(periferal.id),
     method: :delete,

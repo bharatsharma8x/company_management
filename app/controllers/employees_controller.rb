@@ -1,6 +1,18 @@
 class EmployeesController < ApplicationController
   before_action :set_employee, only: %i[ show edit update destroy ]
 
+  def filter_by_department
+    if params[:department_id].present?
+      @set_employees = Employee.where(department_id: params[:department_id])
+    else
+      @set_employees = []
+    end
+
+    respond_to do |format|
+      format.json { render json: @set_employees }
+    end
+  end
+
   def index
     @employees = Employee.all
   end

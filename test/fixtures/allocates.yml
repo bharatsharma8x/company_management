@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  employee: one
+  department: one
+  periferal: one
+  allocate_from: 2023-05-22
+  allocate_to: 2023-05-22
+
+two:
+  employee: two
+  department: two
+  periferal: two
+  allocate_from: 2023-05-22
+  allocate_to: 2023-05-22

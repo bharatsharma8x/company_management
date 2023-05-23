@@ -1,6 +1,5 @@
 class Periferal < ApplicationRecord
-  belongs_to :department, optional: true
-  belongs_to :employee, optional: true
+  has_many :allocates
   has_one_attached :bill
 
   validates :name, :purchase_date, :purchase_cost, presence: true

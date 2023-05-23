@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_05_16_102815) do
+ActiveRecord::Schema.define(version: 2023_05_22_120626) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,19 @@ ActiveRecord::Schema.define(version: 2023_05_16_102815) do
     t.string "checksum", null: false
     t.datetime "created_at", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
+
+  create_table "allocates", force: :cascade do |t|
+    t.bigint "employee_id"
+    t.bigint "department_id"
+    t.bigint "periferal_id"
+    t.date "allocate_from"
+    t.date "allocate_to"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["department_id"], name: "index_allocates_on_department_id"
+    t.index ["employee_id"], name: "index_allocates_on_employee_id"
+    t.index ["periferal_id"], name: "index_allocates_on_periferal_id"
   end
 
   create_table "bank_accounts", force: :cascade do |t|
@@ -81,17 +94,14 @@ ActiveRecord::Schema.define(version: 2023_05_16_102815) do
     t.date "warranty_start_date"
     t.integer "warranty_duration_months"
     t.date "warranty_end_date"
-    t.bigint "department_id"
-    t.bigint "employee_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["department_id"], name: "index_periferals_on_department_id"
-    t.index ["employee_id"], name: "index_periferals_on_employee_id"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "allocates", "departments"
+  add_foreign_key "allocates", "employees"
+  add_foreign_key "allocates", "periferals"
   add_foreign_key "bank_accounts", "employees"
   add_foreign_key "employees", "departments"
-  add_foreign_key "periferals", "departments"
-  add_foreign_key "periferals", "employees"
 end

@@ -46,8 +46,13 @@ class EmployeesController < ApplicationController
   end
 
   def destroy
-    @employee.destroy
-    redirect_to "/employees", status: :see_other
+    begin
+      @employee.destroy
+      flash[:notice] = "employee deleted successfully."
+    rescue ActiveRecord::DeleteRestrictionError => e
+      flash[:alert] = "Cannot delete employee. It has associated Bank account."
+    end
+    redirect_to employees_path
   end
 
   private

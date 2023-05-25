@@ -1,18 +1,15 @@
 <tr>
-  <td><%= employee.id%></td>
+  <td><%= employee.id %></td>
   <td><%= link_to employee.f_name, employee %></td>
-  <td><%= employee.l_name%></td>
-  <td><%= employee.email%></td>
-  <td><%= employee.designation%></td>
-  <td>
-    <%# check try method and safe naviagation operator, rubocop gem %>
-    <% if employee.department %>
-      <%= employee.department.department_name %>
-    <% end %>
-  </td>
+  <td><%= employee.l_name %></td>
+  <td><%= employee.email %></td>
+  <td><%= employee.designation %></td>
+  <td><%= employee.department.department_name %></td>
   <td><%= link_to "Edit", edit_employee_path(employee.id) %></td>
   <td><%= link_to "Destroy", employee_path(employee.id),
-   method: :delete,
-  data: { confirm: 'Are you sure?'}
-  %></td>
+    method: :delete,
+    data: { confirm: 'Are you sure?'} %>
+  </td>
 </tr>
+
+<%# check try method and safe naviagation operator, rubocop gem %>

@@ -14,11 +14,13 @@ class AllocatesController < ApplicationController
 
   def create
     @allocate = Allocate.new(allocate_params)
+
     if @allocate.save
       redirect_to @allocate
     else
       render :new, status: :unprocessable_entity
     end
+
   end
 
   def edit
@@ -35,10 +37,11 @@ class AllocatesController < ApplicationController
   def destroy
     begin
       @allocate.destroy
-      redirect_to "/allocates", status: :see_other
-    rescue StandardError => e
-      puts e
+      flash[:notice] = "Allocate deleted successfully."
+    rescue ActiveRecord::DeleteRestrictionError => e
+      flash[:alert] = "Cannot delete allocate. It has associated employees and department."
     end
+    redirect_to allocates_path
   end
 
   private

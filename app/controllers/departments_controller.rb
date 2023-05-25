@@ -3,8 +3,6 @@ class DepartmentsController < ApplicationController
 
   def index
     @departments = Department.all
-    # byebug
-    # @department.find_by_name("hr")
   end
 
   def show
@@ -38,10 +36,12 @@ class DepartmentsController < ApplicationController
   def destroy
     begin
       @department.destroy
-      redirect_to "/departments", status: :see_other
-    rescue StandardError => e
-      puts e
+      flash[:notice] = "Department deleted successfully."
+    rescue ActiveRecord::DeleteRestrictionError => e
+      flash[:alert] = "Cannot delete department. It has associated employees."
     end
+
+    redirect_to departments_path
   end
 
   private

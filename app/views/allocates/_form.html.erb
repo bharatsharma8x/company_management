@@ -1,49 +1,62 @@
 <%= form_with(model: @allocate, local: true) do |form| %>
   <div>
-    <%= form.label :Department %><br>
+    <%= form.label :department %><br>
     <%= form.collection_select :department_id, Department.all, :id, :department_name,{:include_blank => "please select"}, { id: 'department-select' } %>
-  </div><br>
+    <% @allocate.errors.full_messages_for(:department_id).each do |message| %>
+      <div style="color:red"><%= message %></div>
+    <% end %>
+  </div> <br>
 
   <div>
     <%= form.label :Employee %><br>
     <%= form.collection_select :employee_id, [], :id, :f_name, {}, { id: 'employee-select' } %>
-  </div><br>
+    <% @allocate.errors.full_messages_for(:employee_id).each do |message| %>
+      <div style="color:red"><%= message %></div>
+    <% end %>
+  </div> <br>
 
   <div>
-   <%= form.label :Periferal %><br>
-   <%= form.collection_select(:periferal_id, Periferal.all, :id, :name, prompt: true)%>
-  </div><br>
+    <%= form.label :Periferal %><br>
+    <%= form.collection_select(:periferal_id, Periferal.all, :id, :name, prompt: true)%>
+    <% @allocate.errors.full_messages_for(:periferal_id).each do |message| %>
+      <div style="color:red"><%= message %></div>
+    <% end %>
+  </div> <br>
+
+  <div>
+    <%= form.label :allocate_from %><br>
+    <%= form.date_field :allocate_from %>
+  </div> <br>
 
   <div>
     <%= form.label :allocate_to %><br>
     <%= form.date_field :allocate_to %>
-  </div><br>
+  </div> <br>
 
   <%= form.submit %>
 
 <% end %>
 
 <script>
-
- document.getElementById("department-select").addEventListener('change', getEmployee());
-
+ document.getElementById("department-select").addEventListener('change', getEmployee())
  function getEmployee(){
   var departmentSelect = document.getElementById('department-select');
   var employeeSelect = document.getElementById('employee-select');
 
-    departmentSelect.addEventListener('change', function() {
-      var selectedDepartmentId = departmentSelect.value;
-      fetch('/employees/filter_by_department?department_id=' + selectedDepartmentId)
-        .then(response => response.json())
-        .then(data => {
-          employeeSelect.innerHTML = '';
-          data.forEach(function(employee) {
-            var option = document.createElement('option');
-            option.value = employee.id;
-            option.text = employee.f_name;
-            employeeSelect.appendChild(option);
-          });
+  departmentSelect.addEventListener('change', function() {
+    var selectedDepartmentId = departmentSelect.value;
+    fetch('/employees/filter_by_department?department_id=' + selectedDepartmentId)
+      .then(response => response.json())
+      .then(data => {
+        employeeSelect.innerHTML = '';
+        data.forEach(function(employee) {
+          var option = document.createElement('option');
+          option.value = employee.id;
+          option.text = employee.f_name;
+          employeeSelect.appendChild(option);
         });
-    });
+      }
+    );
+  });
 }
 </script>

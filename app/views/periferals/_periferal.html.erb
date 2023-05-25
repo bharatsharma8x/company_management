@@ -1,12 +1,12 @@
-  <tr>
-    <td><%= periferal.id%></td>
-    <td><%= link_to periferal.name, periferal %></td>
-    <td><%= periferal.category%></td>
-    <td><%= periferal.warranty_start_date%></td>
-    <td><%= periferal.warranty_end_date%></td>
-    <td><%= link_to "Edit", edit_periferal_path(periferal.id) %></td>
-    <td><%= link_to "Destroy", periferal_path(periferal.id),
+<tr>
+  <td><%= periferal.id %></td>
+  <td><%= link_to periferal.name, periferal %></td>
+  <td><%= periferal.category %></td>
+  <td><%= periferal.warranty_start_date %></td>
+  <td><%= periferal.warranty_end_date %></td>
+  <td><%= link_to "Edit", edit_periferal_path(periferal.id) %></td>
+  <td><%= link_to "Destroy", periferal_path(periferal.id),
     method: :delete,
-    data: { confirm: 'Are you sure?'}
-    %></td>
-  </tr>
+    data: { confirm: 'Are you sure?'} %>
+  </td>
+</tr>

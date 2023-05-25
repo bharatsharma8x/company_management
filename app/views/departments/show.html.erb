@@ -1,22 +1,22 @@
 <%= link_to "Back", departments_path %> <br>
 <div class="table-responsive">
-<table class="table">
-  <tr>
-    <th>ID</th>
-    <th>department_name</th>
-    <th>NO. of Employees</th>
-    <th>EDIT</th>
-    <th>DELETE</th>
-  </tr>
-  <tr>
-    <td><%= @department.id%></td>
-    <td><%= @department.department_name%></td>
-    <td><%= @department.employee_count%></td>
-    <td><%= link_to "Edit", edit_department_path(@department.id) %></td>
-    <td><%= link_to "Destroy", department_path(@department.id),
-      method: :delete,
-    data: { confirm: 'Are you sure?'}
-    %></td>
-  </tr>
- </table>
+  <table class="table">
+    <tr>
+      <th>ID</th>
+      <th>department_name</th>
+      <th>NO. of Employees</th>
+      <th>EDIT</th>
+      <th>DELETE</th>
+    </tr>
+    <tr>
+      <td><%= @department.id %></td>
+      <td><%= @department.department_name %></td>
+      <td><%= @department.employee_count %></td>
+      <td><%= link_to "Edit", edit_department_path(@department.id) %></td>
+      <td><%= link_to "Destroy", department_path(@department.id),
+        method: :delete,
+        data: { confirm: 'Are you sure?'} %>
+      </td>
+    </tr>
+  </table>
 </div>

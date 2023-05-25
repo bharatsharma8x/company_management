@@ -34,9 +34,13 @@ class PeriferalsController < ApplicationController
   end
 
   def destroy
-    @periferal.destroy
-
-    redirect_to "/periferals", status: :see_other
+    begin
+      @periferal.destroy
+      flash[:notice] = "periferal deleted successfully."
+    rescue ActiveRecord::DeleteRestrictionError => e
+      flash[:alert] = "Cannot delete periferal"
+    end
+    redirect_to periferals_path
   end
 
   private

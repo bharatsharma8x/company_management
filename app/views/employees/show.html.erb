@@ -1,98 +1,95 @@
 <%= link_to "Back", employees_path %> <br>
+
 <div class="container-fluid">
   <div class="row">
     <div class="col-lg">
-    <p>
-    <strong>First name: </strong>
-    <%= @employee.f_name %>
-    </p>
 
-    <p>
-    <strong>Last name: </strong>
-    <%= @employee.l_name %>
-    </p>
+      <p>
+        <strong>First name: </strong>
+        <%= @employee.f_name %>
+      </p>
+
+      <p>
+        <strong>Last name: </strong>
+        <%= @employee.l_name %>
+      </p>
 
       <p>
         <strong>DOB: </strong>
-       <%= @employee.dob %>
-            </p>
-
-           <p>
-      <strong>email: </strong>
-      <%= @employee.email %>
+        <%= @employee.dob %>
       </p>
 
       <p>
-      <strong>Address: </strong>
-       <%= @employee.address %>
+        <strong>email: </strong>
+        <%= @employee.email %>
       </p>
 
-       <p>
-       <strong>Contact no: </strong>
-       <%= @employee.contact_no %>
-       </p>
+      <p>
+        <strong>Address: </strong>
+        <%= @employee.address %>
+      </p>
 
-        <p>
-       <strong>Designation: </strong>
-       <%= @employee.designation %>
-       </p>
+      <p>
+        <strong>Contact no: </strong>
+        <%= @employee.contact_no %>
+      </p>
 
-        <p>
-       <strong>Hire date: </strong>
-       <%= @employee.hire_date %>
-       </p>
+      <p>
+        <strong>Designation: </strong>
+        <%= @employee.designation %>
+      </p>
 
-        <p>
-       <strong>left date: </strong>
-       <%= @employee.left_date %>
-       </p>
+      <p>
+        <strong>Hire date: </strong>
+        <%= @employee.hire_date %>
+      </p>
 
+      <p>
+        <strong>left date: </strong>
+        <%= @employee.left_date %>
+      </p>
 
-        <p>
-       <strong>salary: </strong>
-       <%= @employee.salary %>
-       </p>
+      <p>
+        <strong>salary: </strong>
+        <%= @employee.salary %>
+      </p>
 
-        <p>
-       <strong>ctc: </strong>
-       <%= @employee.ctc %>
-       </p>
+      <p>
+        <strong>ctc: </strong>
+        <%= @employee.ctc %>
+      </p>
 
-        <p>
-       <strong>Department: </strong>
-       <% if @employee.department %>
-         <%= @employee.department.department_name %>
-         <% end %>
-       </p>
+      <p>
+        <strong>Department: </strong>
+        <%= @employee.department.department_name %>
+      </p>
 
-        <p>
-       <strong>Bank_name: </strong>
-       <%= @employee.bank_account.bank_name %>
-       </p>
+      <p>
+        <strong>Bank name: </strong>
+        <%= @employee.bank_account.bank_name %>
+      </p>
 
-       <p>
-       <strong>Ifsc_code: </strong>
-         <%= @employee.bank_account.ifsc_code %>
-       </p>
+      <p>
+        <strong>Ifsc_code: </strong>
+        <%= @employee.bank_account.ifsc_code %>
+      </p>
 
-       <p>
-       <strong>Account_number: </strong>
+      <p>
+        <strong>Account_number: </strong>
         <%= @employee.bank_account.account_number %>
-       </p>
+      </p>
+    </div>
 
-  </div>
       <div class="col-sm">
-
-        <%if @employee.resume.attached?%>
+        <%if @employee.resume.attached? %>
           <%= image_tag @employee.resume, :style => "width: 300px; height:300px" %>
         <%end%>
-
-          <br><br><br>
-          <%= link_to "Edit", edit_employee_path(@employee.id) %>
-          <%= link_to "Destroy", employee_path(@employee.id),
-            method: :delete,
-            data: { confirm: 'Are you sure?'}
-          %>
+        <br> <br> <br>
+        <%= link_to "Edit", edit_employee_path(@employee.id) %>
+        <%= link_to "Destroy", employee_path(@employee.id),
+          method: :delete,
+          data: { confirm: 'Are you sure?'}
+        %>
       </div>
   </div>
 </div>

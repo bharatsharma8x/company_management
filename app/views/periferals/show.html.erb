@@ -3,69 +3,66 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-lg">
-    <p>
-    <strong>id : </strong>
-    <%= @periferal.id %>
-    </p>
+      <p>
+        <strong>id : </strong>
+        <%= @periferal.id %>
+      </p>
 
-    <p>
-    <strong>Name: </strong>
-    <%= @periferal.name %>
-    </p>
+      <p>
+        <strong>Name: </strong>
+        <%= @periferal.name %>
+      </p>
 
-    <p>
-    <strong>Description: </strong>
-    <%= @periferal.description %>
-    </p>
+      <p>
+        <strong>Description: </strong>
+        <%= @periferal.description %>
+      </p>
 
-    <p>
-    <strong>Category: </strong>
-    <%= @periferal.category %>
-    </p>
+      <p>
+        <strong>Category: </strong>
+        <%= @periferal.category %>
+      </p>
 
-    <p>
-    <strong>Purchase date: </strong>
-      <%= @periferal.purchase_date %>
-    </p>
+      <p>
+        <strong>Purchase date: </strong>
+        <%= @periferal.purchase_date %>
+      </p>
 
-     <p>
-    <strong>Purchase cost: </strong>
-      <%= @periferal.purchase_cost %>
-    </p>
+      <p>
+        <strong>Purchase cost: </strong>
+        <%= @periferal.purchase_cost %>
+      </p>
 
-    <p>
-    <strong>Condition: </strong>
-      <%= @periferal.condition %>
-    </p>
+      <p>
+        <strong>Condition: </strong>
+        <%= @periferal.condition %>
+      </p>
 
-    <p>
-      <strong>Warranty start date: </strong>
-      <%= @periferal.warranty_start_date %>
-    </p>
+      <p>
+        <strong>Warranty start date: </strong>
+        <%= @periferal.warranty_start_date %>
+      </p>
 
-    <p>
-      <strong>Warranty Duration(mm): </strong>
-      <%= @periferal.warranty_duration_months %>
-    </p>
+      <p>
+        <strong>Warranty Duration(mm): </strong>
+        <%= @periferal.warranty_duration_months %>
+      </p>
 
-    <p>
-      <strong>Warranty till: </strong>
-      <%= @periferal.warranty_end_date %>
-    </p>
-  </div>
+      <p>
+        <strong>Warranty till: </strong>
+        <%= @periferal.warranty_end_date %>
+      </p>
+    </div>
 
-      <div class="col-sm">
-
-        <%if @periferal.bill.attached?%>
-          <%= image_tag @periferal.bill, :style => "width: 300px; height:300px" %>
-        <%end%>
-
-          <br><br><br>
-          <%= link_to "Edit", edit_periferal_path(@periferal.id) %>
-          <%= link_to "Destroy", periferal_path(@periferal.id),
-            method: :delete,
-            data: { confirm: 'Are you sure?'}
-          %>
-      </div>
+    <div class="col-sm">
+      <%if @periferal.bill.attached? %>
+        <%= image_tag @periferal.bill, :style => "width: 300px; height:300px" %>
+      <%end%>
+      <br><br><br>
+      <%= link_to "Edit", edit_periferal_path(@periferal) %>
+      <%= link_to "Destroy", periferal_path(@periferal),
+        method: :delete,
+        data: { confirm: 'Are you sure?'} %>
+    </div>
   </div>
 </div>

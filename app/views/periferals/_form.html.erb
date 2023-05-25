@@ -7,7 +7,7 @@
     <% end %>
   </div><br>
 
- <div>
+  <div>
     <%= form.label :description %><br>
     <%= form.text_area :description %>
     <% @periferal.errors.full_messages_for(:description).each do |message| %>
@@ -15,58 +15,56 @@
     <% end %>
   </div><br>
 
- <div>
+  <div>
     <%= form.label "Category" %><br>
     <%= form.text_field :category %>
-     <% @periferal.errors.full_messages_for(:category).each do |message| %>
+    <% @periferal.errors.full_messages_for(:category).each do |message| %>
       <div style="color:red"><%= message %></div>
     <% end %>
   </div><br>
 
- <div>
+  <div>
     <%= form.label :purchase_date %><br>
     <%= form.date_field :purchase_date %>
-     <% @periferal.errors.full_messages_for(:purchase_date).each do |message| %>
+    <% @periferal.errors.full_messages_for(:purchase_date).each do |message| %>
       <div style="color:red"><%= message %></div>
     <% end %>
   </div><br>
 
- <div>
+  <div>
     <%= form.label :purchase_cost %><br>
     <%= form.number_field :purchase_cost %>
-     <% @periferal.errors.full_messages_for(:purchase_cost).each do |message| %>
+    <% @periferal.errors.full_messages_for(:purchase_cost).each do |message| %>
       <div style="color:red"><%= message %></div>
     <% end %>
   </div><br>
 
-   <div>
+  <div>
     <%= form.label :condition %><br>
     <%= form.text_field :condition %>
-     <% @periferal.errors.full_messages_for(:condition).each do |message| %>
+    <% @periferal.errors.full_messages_for(:condition).each do |message| %>
       <div style="color:red"><%= message %></div>
     <% end %>
   </div><br>
 
- <div>
+  <div>
     <%= form.label :warranty_start_date %><br>
     <%= form.date_field :warranty_start_date %>
-
   </div><br>
 
- <div>
+  <div>
     <%= form.label :warranty_duration_months %><br>
     <%= form.number_field :warranty_duration_months, min: 0 %>
   </div><br>
 
-
-   <div>
+  <div>
     <%= form.label :bill %><br>
     <%= form.file_field :bill %>
   </div><br>
 
-
   <div>
     <%= form.submit %>
   </div>
+  
   <%= submit_tag("Reset", { :name => 'reset', :id => 'reset_button', :type => "reset" }) %>
 <% end %>

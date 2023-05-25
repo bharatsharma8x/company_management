@@ -1,17 +1,18 @@
 <div class="d-flex align-items-center justify-content-center">
-<h1>Department List</h1>
+  <h1>Department List</h1>
 </div>
+
 <%= link_to "New Department", new_department_path %><br><br>
+
 <div class="table-responsive">
-<table class="table">
-  <tr>
-    <th>ID</th>
-    <th>department_name</th>
-    <th>NO. of Employees</th>
-     <th>EDIT</th>
-    <th>DELETE</th>
-  </tr>
-  <%# check how to render collection %>
-  <%= render(@departments) || "There are no products available." %>
- </table>
+  <table class="table">
+    <tr>
+      <th>ID</th>
+      <th>department_name</th>
+      <th>NO. of Employees</th>
+      <th>EDIT</th>
+      <th>DELETE</th>
+    </tr>
+    <%= render(@departments) || "There are no products available." %>
+  </table>
 </div>

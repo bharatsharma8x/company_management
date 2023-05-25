@@ -3,5 +3,5 @@ class BankAccount < ApplicationRecord
 
   validates :bank_name, presence: true
   validates :ifsc_code, presence: true
-  validates :account_number, presence: true ,numericality: { only_integer: true }
+  validates :account_number, presence: true, numericality: { only_integer: true }
 end

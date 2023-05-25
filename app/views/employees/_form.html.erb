@@ -32,7 +32,7 @@
     <% end %>
   </div><br>
 
-    <div>
+  <div>
     <%= form.label :address %><br>
     <%= form.text_area :address %>
     <% @employee.errors.full_messages_for(:address).each do |message| %>
@@ -89,8 +89,8 @@
   </div><br>
 
   <div>
-   <%= form.label :Department %><br>
-   <%= form.collection_select(:department_id, Department.all, :id, :department_name, prompt: true)%>
+    <%= form.label :Department %><br>
+    <%= form.collection_select(:department_id, Department.all, :id, :department_name, prompt: true) %>
   </div>
 
   <div>
@@ -98,26 +98,29 @@
     <%= form.file_field :resume %>
   </div><br>
 
-  <%= form.fields_for :bank_account do |bd| %>
-    <%= bd.label :bank_name %><br>
-    <%= bd.text_field :bank_name %>
-    <% @employee.bank_account.errors.full_messages_for(:bank_name).each do |message| %>
-      <div style="color:red"><%= message %></div>
+    <%= form.fields_for :bank_account do |bd| %>
+
+      <%= bd.label :bank_name %><br>
+      <%= bd.text_field :bank_name %>
+      <% @employee.bank_account.errors.full_messages_for(:bank_name).each do |message| %>
+        <div style="color:red"><%= message %></div>
+      <% end %>
+      <br>
+
+      <%= bd.label :ifsc_code %><br>
+      <%= bd.text_field :ifsc_code %>
+      <% @employee.bank_account.errors.full_messages_for(:ifsc_code).each do |message| %>
+        <div style="color:red"><%= message %></div>
+      <% end %>
+      <br>
+
+      <%= bd.label :account_number %><br>
+      <%= bd.text_field :account_number %>
+      <% @employee.bank_account.errors.full_messages_for(:account_number).each do |message| %>
+        <div style="color:red"><%= message %></div>
+      <% end %>
+      <br>
     <% end %>
-    <br>
-    <%= bd.label :ifsc_code %><br>
-    <%= bd.text_field :ifsc_code %>
-    <% @employee.bank_account.errors.full_messages_for(:ifsc_code).each do |message| %>
-      <div style="color:red"><%= message %></div>
-    <% end %>
-    <br>
-    <%= bd.label :account_number %><br>
-    <%= bd.text_field :account_number %>
-    <% @employee.bank_account.errors.full_messages_for(:account_number).each do |message| %>
-      <div style="color:red"><%= message %></div>
-    <% end %>
-  <% end %>
-    <br>
 
   <div>
     <%= form.submit %>

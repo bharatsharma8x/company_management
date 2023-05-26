@@ -62,7 +62,7 @@ class EmployeesController < ApplicationController
   end
 
   def employee_params
-    params.require(:employee).permit(:f_name, :l_name, :dob, :email, :address, :contact_no, :designation, :hire_date, :left_date, :salary, :ctc, :department_id, :resume, bank_account_attributes: [:bank_name, :account_number, :ifsc_code])
+    params.require(:employee).permit(:f_name, :l_name, :dob, :email, :address, :contact_no, :designation, :hire_date, :left_date, :in_hand_salary, :bonus_amount, :ctc, :department_id, :resume, bank_account_attributes: [:bank_name, :account_number, :ifsc_code])
   end
 
 end

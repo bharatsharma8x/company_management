@@ -59,8 +59,8 @@
         <%= image_tag @periferal.bill, { class: 'doc_img' } %>
       <%end%>
       <br><br><br>
-      <%= link_to "Edit", edit_periferal_path(@periferal) %>
-      <%= link_to "Destroy", periferal_path(@periferal),
+      <%= link_to "Edit", [:edit, @periferal] %>
+      <%= link_to "Destroy", @periferal,
         method: :delete,
         data: { confirm: 'Are you sure?'} %>
     </div>

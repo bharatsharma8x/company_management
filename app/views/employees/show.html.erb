@@ -20,7 +20,7 @@
       </p>
 
       <p>
-        <strong>email: </strong>
+        <strong>Email: </strong>
         <%= @employee.email %>
       </p>
 
@@ -45,7 +45,7 @@
       </p>
 
       <p>
-        <strong>left date: </strong>
+        <strong>Left date: </strong>
         <%= @employee.left_date %>
       </p>
 
@@ -60,41 +60,43 @@
       </p>
 
       <p>
-        <strong>ctc: </strong>
+        <strong>CTC: </strong>
         <%= @employee.ctc %>
       </p>
 
       <p>
         <strong>Department: </strong>
-        <%= @employee.department.department_name %>
+        <%= @employee.department.try(:department_name) %>
       </p>
 
       <p>
         <strong>Bank name: </strong>
-        <%= @employee.bank_account.bank_name %>
+        <%= @employee.bank_account.try(:bank_name) %>
       </p>
 
       <p>
-        <strong>Ifsc_code: </strong>
-        <%= @employee.bank_account.ifsc_code %>
+        <strong>IFSC code: </strong>
+        <%= @employee.bank_account.try(:ifsc_code) %>
       </p>
 
       <p>
-        <strong>Account_number: </strong>
-        <%= @employee.bank_account.account_number %>
+        <strong>Account Number: </strong>
+        <%= @employee.bank_account.try(:account_number) %>
       </p>
     </div>
 
-      <div class="col-sm">
-        <%if @employee.resume.attached? %>
-          <%= image_tag @employee.resume, { class: 'doc_img' } %>
-        <%end%>
-        <br> <br> <br>
-        <%= link_to "Edit", edit_employee_path(@employee.id) %>
-        <%= link_to "Destroy", employee_path(@employee.id),
-          method: :delete,
-          data: { confirm: 'Are you sure?'}
-        %>
-      </div>
+    <div class="col-sm">
+      <%if @employee.resume.attached? %>
+        <%= image_tag @employee.resume, { class: 'doc_img' } %>
+      <%end%>
+      <br> <br> <br>
+      <%= link_to "Edit", edit_employee_path(@employee.id) %>
+      <%= link_to "Destroy", employee_path(@employee.id),
+        method: :delete,
+        data: { confirm: 'Are you sure?'}
+      %>
+    </div>
+
+
   </div>
 </div>

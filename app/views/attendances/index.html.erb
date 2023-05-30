@@ -1,0 +1,25 @@
+<div class="d-flex align-items-center justify-content-center">
+  <h1>Attendance</h1>
+</div>
+
+<%= link_to "New Attendance", new_attendance_path %><br><br>
+
+<%= form_tag({ controller: 'attendances', action: 'index' }, method: 'get') do %>
+  <%= select_tag :employee_id, options_for_select(Employee.all.collect { |employee| [employee.f_name, employee.id] }, params[:employee_id]), { prompt: 'Select Employee' } %>
+  <%= submit_tag 'Filter' %>
+<% end %>
+
+<div class="table-responsive">
+  <table class="table">
+    <tr>
+      <th>Employee</th>
+      <th>Status</th>
+      <th>Check in </th>
+      <th>Check out</th>
+      <th>hours_worked</th>
+      <th>edit</th>
+      <th>delete</th>
+    </tr>
+    <%= render(@attendances) || "There are no products available." %>
+  </table>
+</div>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_05_24_111723) do
+ActiveRecord::Schema.define(version: 2023_05_26_122855) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -64,6 +64,17 @@ ActiveRecord::Schema.define(version: 2023_05_24_111723) do
     t.index ["department_id"], name: "index_allocates_on_department_id"
     t.index ["employee_id"], name: "index_allocates_on_employee_id"
     t.index ["periferal_id"], name: "index_allocates_on_periferal_id"
+  end
+
+  create_table "attendances", force: :cascade do |t|
+    t.bigint "employee_id"
+    t.string "status"
+    t.datetime "check_in_time"
+    t.datetime "check_out_time"
+    t.decimal "hours_worked"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["employee_id"], name: "index_attendances_on_employee_id"
   end
 
   create_table "bank_accounts", force: :cascade do |t|
@@ -120,6 +131,7 @@ ActiveRecord::Schema.define(version: 2023_05_24_111723) do
   add_foreign_key "allocates", "departments"
   add_foreign_key "allocates", "employees"
   add_foreign_key "allocates", "periferals"
+  add_foreign_key "attendances", "employees"
   add_foreign_key "bank_accounts", "employees"
   add_foreign_key "employees", "departments"
 end

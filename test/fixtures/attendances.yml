@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  employee: one
+  attendance_date: 2023-05-26
+  status: MyString
+  check_in_time: 2023-05-26 17:58:55
+  check_out_time: 2023-05-26 17:58:55
+  hours_worked: 9.99
+  salary_earned: 9.99
+
+two:
+  employee: two
+  attendance_date: 2023-05-26
+  status: MyString
+  check_in_time: 2023-05-26 17:58:55
+  check_out_time: 2023-05-26 17:58:55
+  hours_worked: 9.99
+  salary_earned: 9.99

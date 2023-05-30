@@ -1,0 +1,24 @@
+<%= link_to "Back", attendances_path %> <br>
+<div class="table-responsive">
+  <table class="table">
+    <tr>
+      <th>id</th>
+      <th>Status</th>
+      <th>Check in </th>
+      <th>Check out</th>
+      <th>hours_worked</th>
+      <th>edit</th>
+      <th>delete</th>
+    </tr>
+    <tr>
+      <td><%= @attendance.employee.try(:f_name) %></td>
+      <td><%= @attendance.status %></td>
+      <td><%= @attendance.check_in_time %></td>
+      <td><%= @attendance.check_out_time %></td>
+      <td><%= @attendance.hours_worked %></td>
+      <td><%= link_to "Edit", edit_attendance_path(@attendance) %></td>
+      <td><%= link_to "Destroy", attendance_path(@attendance),
+        method: :delete,
+        data: { confirm: 'Are you sure?'} %>
+      </td>
+    </tr>

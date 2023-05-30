@@ -1,0 +1,38 @@
+<%= form_with model: @attendance, local: true do |form| %>
+  <div>
+    <%= form.label "Employee Name" %><br>
+    <%= form.collection_select(:employee_id, Employee.all, :id, :f_name, prompt: true) %>
+    <% @attendance.errors.full_messages_for(:employee_id).each do |message| %>
+      <div style="color:red"><%= message %></div>
+    <% end %>
+  </div> <br>
+
+  <div>
+    <%= form.label "Status" %><br>
+    <%= form.select :status, ['Present', 'Absent', 'Half-day', 'Leave']%>
+    <% @attendance.errors.full_messages_for(:status).each do |message| %>
+      <div style="color:red"><%= message %></div>
+    <% end %>
+  </div> <br>
+
+  <div>
+    <%= form.label "Check in time" %><br>
+    <%= form.datetime_select :check_in_time %>
+    <% @attendance.errors.full_messages_for(:check_in_time).each do |message| %>
+      <div style="color:red"><%= message %></div>
+    <% end %>
+  </div> <br>
+
+  <div>
+    <%= form.label "Check out time" %><br>
+    <%= form.datetime_select :check_out_time %>
+    <% @attendance.errors.full_messages_for(:check_out_time).each do |message| %>
+      <div style="color:red"><%= message %></div>
+    <% end %>
+  </div> <br>
+
+  <div>
+    <%= form.submit %>
+    <%= submit_tag("Reset", { :name => 'reset', :id => 'reset_button', :type => "reset" }) %>
+  </div>
+<% end %>

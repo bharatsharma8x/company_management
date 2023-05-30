@@ -1,7 +1,7 @@
 <tr>
     <td><%= allocate.id %></td>
     <td><%= allocate.employee.try(:f_name) %></td>
-    <td><%= allocate.periferal.name %></td>
+    <td><%= allocate.periferal.try(:name) %></td>
     <td><%= allocate.allocate_from %></td>
     <td><%= allocate.allocate_to %></td>
     <td><%= link_to "Edit", edit_allocate_path(allocate.id) %></td>

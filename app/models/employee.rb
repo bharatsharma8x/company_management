@@ -1,4 +1,5 @@
 class Employee < ApplicationRecord
+  has_many :attendance
   has_many :allocates
   belongs_to :department
   has_many :periferals
@@ -10,11 +11,11 @@ class Employee < ApplicationRecord
 
   before_save :sanitize_data
 
-  # validates :f_name, :l_name, :dob, :email, :address, :contact_no, :hire_date,  presence: true
-  # validates :email, presence: true, uniqueness: true, format: { with: /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i }
-  # validate :dob_cannot_be_in_the_future
-  # validates :contact_no, uniqueness: true, numericality: { only_integer: true }, length: { minimum: 10 }
-  # validates :salary, :ctc, numericality: { only_integer: true }
+  validates :f_name, :l_name, :dob, :email, :address, :contact_no, :hire_date,  presence: true
+  validates :email, presence: true, uniqueness: true, format: { with: /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i }
+  validate :dob_cannot_be_in_the_future
+  validates :contact_no, uniqueness: true, numericality: { only_integer: true }, length: { minimum: 10 }
+  validates :salary, :ctc, numericality: { only_integer: true }
 
   after_create :update_department_employee_count
   after_update :update_department_employee_count

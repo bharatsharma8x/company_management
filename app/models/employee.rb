@@ -1,10 +1,11 @@
 class Employee < ApplicationRecord
-  has_many :attendance
-  has_many :allocates
   belongs_to :department
   has_many :periferals
   has_one_attached :resume
   has_one :bank_account, dependent: :destroy
+  has_many :allocates
+  has_many :attendance
+  has_many :salaries
 
   accepts_nested_attributes_for :bank_account
   validates_associated :bank_account
@@ -15,7 +16,7 @@ class Employee < ApplicationRecord
   validates :email, presence: true, uniqueness: true, format: { with: /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i }
   validate :dob_cannot_be_in_the_future
   validates :contact_no, uniqueness: true, numericality: { only_integer: true }, length: { minimum: 10 }
-  validates :salary, :ctc, numericality: { only_integer: true }
+  validates :in_hand_salary, :ctc, numericality: { only_integer: true }
 
   after_create :update_department_employee_count
   after_update :update_department_employee_count

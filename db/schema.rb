@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_05_26_122855) do
+ActiveRecord::Schema.define(version: 2023_05_31_091540) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -113,6 +113,13 @@ ActiveRecord::Schema.define(version: 2023_05_26_122855) do
     t.index ["department_id"], name: "index_employees_on_department_id"
   end
 
+  create_table "holidays", force: :cascade do |t|
+    t.date "holiday"
+    t.string "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "periferals", force: :cascade do |t|
     t.string "name"
     t.text "description"
@@ -123,6 +130,18 @@ ActiveRecord::Schema.define(version: 2023_05_26_122855) do
     t.date "warranty_start_date"
     t.integer "warranty_duration_months"
     t.date "warranty_end_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "salaries", force: :cascade do |t|
+    t.integer "employee_id"
+    t.date "month"
+    t.integer "total_days"
+    t.integer "present_days"
+    t.integer "leaves"
+    t.integer "absents"
+    t.decimal "salary"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

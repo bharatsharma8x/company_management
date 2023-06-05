@@ -50,6 +50,12 @@
 
       <div style="margin-right:20px;">
         <% if admin_user_signed_in? %>
+          <%= link_to "Salary", salaries_path %>
+        <%end%>
+      </div>
+
+      <div style="margin-right:20px;">
+        <% if admin_user_signed_in? %>
           <%= link_to "Sign Out", destroy_admin_user_session_path, method: :delete %></div>
         <%else%>
           <%= link_to "Sign In", new_admin_user_session_path %></div>

@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  employee_id: 1
+  month: 2023-05-31
+  total_days: 1
+  present_days: 1
+  salary: 9.99
+
+two:
+  employee_id: 1
+  month: 2023-05-31
+  total_days: 1
+  present_days: 1
+  salary: 9.99

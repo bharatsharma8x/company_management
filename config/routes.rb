@@ -13,4 +13,6 @@ Rails.application.routes.draw do
     resources :periferals
     resources :allocates
     resources :attendances
+    resources :salaries
+
 end

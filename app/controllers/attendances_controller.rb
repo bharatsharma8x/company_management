@@ -1,7 +1,7 @@
 class AttendancesController < ApplicationController
   before_action :set_attendance, only: [:show, :edit, :update, :destroy]
 
-  def index 
+  def index
     @employees = Employee.all
     @selected_employee_id = params[:employee_id]
 
@@ -59,3 +59,5 @@ class AttendancesController < ApplicationController
     params.require(:attendance).permit(:employee_id, :status, :check_in_time, :check_out_time, :hours_worked)
   end
 end
+
+

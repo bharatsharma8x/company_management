@@ -9,7 +9,7 @@
 
   <div>
     <%= form.label "Status" %><br>
-    <%= form.select :status, ['Present', 'Absent', 'Half-day', 'Leave']%>
+    <%= form.select :status, ['Absent', 'Present', 'Half-day', 'Leave']%>
     <% @attendance.errors.full_messages_for(:status).each do |message| %>
       <div style="color:red"><%= message %></div>
     <% end %>

@@ -1,0 +1,26 @@
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <p>Salary slip of <%= @salary.employee.try(:f_name) %>!</p>
+    <p>
+    Salary details<br>
+    --------------------------
+    </p>
+    <p>Employee Id : <%= @salary.employee_id %></p>
+    <p>Employee Name : <%= @salary.employee.try(:f_name) %></p>
+    <p>Month : <%= @salary.month.strftime("%B") %></p>
+    <p>Total Days : <%= @salary.total_days %></p>
+    <p>Total Present : <%= @salary.present_days %></p>
+    <p>Total Leave : <%= @salary.leaves %></p>
+    <p>Total Absent : <%= @salary.absents %></p>
+    <h2>Salary : <%= @salary.salary %></h2>
+
+    <p>
+    <br>
+    THANKYOU
+    ----------
+    </p>
+  </body>
+</html>

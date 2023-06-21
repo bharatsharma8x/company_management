@@ -17,7 +17,6 @@ class DepartmentsController < ApplicationController
 
   def create
     @department = Department.new(department_params)
-
     if @department.save
       redirect_to @department
     else

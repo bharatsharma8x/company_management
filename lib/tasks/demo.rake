@@ -19,7 +19,13 @@ namespace :demo do
 
       t_salary = (t_leave + t_present + sat_sun_count) * per_day_salary
 
-      Salary.create(employee_id: employee_id, month: Time.now - 1.month, total_days: days_in_month, present_days: t_present, leaves: t_leave, absents: t_absent, salary: t_salary)
+      @nSalary = Salary.new(employee_id: employee_id, month: Time.now - 1.month, total_days: days_in_month, present_days: t_present, leaves: t_leave, absents: t_absent, salary: t_salary)
+      if @nSalary.save
+        salary_detail = SalaryMailer.with(salary: @nSalary).new_salary_email.deliver_now
+        puts "#{salary_detail}"
+      end
+
+
     end
 
     employee_ids = Employee.all.ids

@@ -1,5 +1,6 @@
 class AllocatesController < ApplicationController
-  before_action :set_allocate, only: %i[ show edit update destroy]
+  load_and_authorize_resource
+  before_action :set_allocate, only: %i[show edit update destroy]
 
   def index
     @allocates = Allocate.all
@@ -37,14 +38,15 @@ class AllocatesController < ApplicationController
   def destroy
     begin
       @allocate.destroy
-      flash[:notice] = "Allocate deleted successfully."
+      flash[:notice] = 'Allocate deleted successfully.'
     rescue ActiveRecord::DeleteRestrictionError => e
-      flash[:alert] = "Cannot delete allocate. It has associated employees and department."
+      flash[:alert] = 'Cannot delete allocate. It has associated employees and department.'
     end
     redirect_to allocates_path
   end
 
   private
+
   def set_allocate
     @allocate = Allocate.find(params[:id])
   end
@@ -52,5 +54,4 @@ class AllocatesController < ApplicationController
   def allocate_params
     params.require(:allocate).permit(:allocate_from, :allocate_to, :department_id, :employee_id, :periferal_id)
   end
-
 end

@@ -15,4 +15,6 @@
     </tr>
     <%= render(@departments) || "There are no products available." %>
   </table>
+    <%== pagy_nav(@pagy) if @pagy.pages > 1 %>
+
 </div>

@@ -99,6 +99,9 @@
   <div>
     <%= form.label :Department %><br>
     <%= form.collection_select(:department_id, Department.all, :id, :department_name, prompt: true) %>
+    <% @employee.errors.full_messages_for(:department_id).each do |message| %>
+      <div style="color:red"><%= message %></div>
+    <% end %>
   </div>
 
   <div>

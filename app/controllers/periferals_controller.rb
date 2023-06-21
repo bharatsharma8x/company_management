@@ -1,5 +1,7 @@
 class PeriferalsController < ApplicationController
-  before_action :set_periferal, only: %i[ show edit update destroy ]
+  load_and_authorize_resource
+
+  before_action :set_periferal, only: %i[show edit update destroy]
 
   def index
       @periferals = Periferal.all
@@ -36,14 +38,15 @@ class PeriferalsController < ApplicationController
   def destroy
     begin
       @periferal.destroy
-      flash[:notice] = "periferal deleted successfully."
+      flash[:notice] = 'periferal deleted successfully.'
     rescue ActiveRecord::DeleteRestrictionError => e
-      flash[:alert] = "Cannot delete periferal"
+      flash[:alert] = 'Cannot delete periferal'
     end
     redirect_to periferals_path
   end
 
   private
+
   def set_periferal
     @periferal = Periferal.find(params[:id])
   end

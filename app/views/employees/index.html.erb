@@ -1,10 +1,12 @@
 <div class="d-flex align-items-center justify-content-center">
+
   <h1>Employee List</h1>
 </div>
 
 <%= link_to "New Employee", new_employee_path %><br><br>
 
 <div class="table-responsive">
+  <td><%= link_to "PDF",employees_path(format: :pdf) %></td>
   <table class="table">
     <tr>
       <th>ID</th>
@@ -15,7 +17,7 @@
       <th>Department</th>
       <th>EDIT</th>
       <th>DELETE</th>
-
+      <th>PDF</th>
     </tr>
     <%= render(@employees) || "There are no products available." %>
   </table>

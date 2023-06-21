@@ -1,7 +1,14 @@
-class AdminUser < ApplicationRecord
+class User < ApplicationRecord
+  has_one :employee
+
+  rolify
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  #defining rolls
+  enum role: [:admin, :employee]
+
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable,
-         :trackable
+         :recoverable, :rememberable, :validatable
+
+
 end

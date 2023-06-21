@@ -1,18 +1,17 @@
 Rails.application.routes.draw do
+  devise_for :users
+  root 'home#index'
 
-    devise_for :admin_users
+  resources :employees do
+    resources :bank_accounts
+    get 'filter_by_department', on: :collection
+    get 'sort', on: :collection
 
-    root "home#index"
+  end
 
-    resources :employees do
-      resources :bank_accounts
-      get 'filter_by_department', on: :collection
-    end
-
-    resources :departments
-    resources :periferals
-    resources :allocates
-    resources :attendances
-    resources :salaries
-
+  resources :departments
+  resources :periferals
+  resources :allocates
+  resources :attendances
+  resources :salaries
 end

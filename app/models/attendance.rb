@@ -15,4 +15,5 @@ class Attendance < ApplicationRecord
     save if persisted?
     hours_worked
   end
+
 end

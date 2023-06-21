@@ -1,11 +1,14 @@
 class DepartmentsController < ApplicationController
-  before_action :set_department, only: %i[ show edit update destroy]
+  load_and_authorize_resource
+  before_action :set_department, only: %i[show edit update destroy]
+  include Pagy::Backend
 
   def index
-    @departments = Department.all
+    @pagy, @departments = pagy(Department.all)
   end
 
   def show
+    @employees = @department.employees
   end
 
   def new
@@ -36,9 +39,9 @@ class DepartmentsController < ApplicationController
   def destroy
     begin
       @department.destroy
-      flash[:notice] = "Department deleted successfully."
+      flash[:notice] = "#{@department.department_name} department deleted successfully."
     rescue ActiveRecord::DeleteRestrictionError => e
-      flash[:alert] = "Cannot delete department. It has associated employees."
+      flash[:alert] = 'Cannot delete department. It has associated employees.'
     end
 
     redirect_to departments_path
@@ -53,5 +56,4 @@ class DepartmentsController < ApplicationController
   def department_params
     params.require(:department).permit(:department_name)
   end
-
 end

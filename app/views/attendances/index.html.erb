@@ -4,12 +4,19 @@
 
 <%= link_to "New Attendance", new_attendance_path %><br><br>
 
-<%= form_tag({ controller: 'attendances', action: 'index' }, method: 'get') do %>
-  <%= select_tag :employee_id, options_for_select(Employee.all.collect { |employee| [employee.f_name, employee.id] }, params[:employee_id]), { prompt: 'Select Employee' } %>
-  <%= submit_tag 'Filter' %>
+<%= form_tag attendances_path, method: :get do %>
+  <%= label_tag :employee_id, "Employee:" %>
+  <%= select_tag :employee_id, options_for_select(Employee.all.map { |e| [e.f_name, e.id] }) %>
+
+  <%= label_tag :month, "Month:" %>
+  <%= select_month(Date.current, { prefix: 'start_', field_name: 'month' }) %>
+
+
+  <%= submit_tag "Filter" %>
 <% end %>
 
 <div class="table-responsive">
+  <%== pagy_nav(@pagy) if @pagy.pages > 1 %>
   <table class="table">
     <tr>
       <th>Employee</th>
@@ -22,4 +29,5 @@
     </tr>
     <%= render(@attendances) || "No match Found" %>
   </table>
+  <%== pagy_nav(@pagy) if @pagy.pages > 1 %>
 </div>

@@ -1,5 +1,7 @@
 class EmployeesController < ApplicationController
-  before_action :set_employee, only: %i[ show edit update destroy ]
+  load_and_authorize_resource
+
+  before_action :set_employee, only: %i[show edit update destroy]
 
   def filter_by_department
     if params[:department_id].present?
@@ -13,11 +15,30 @@ class EmployeesController < ApplicationController
     end
   end
 
+  def sort
+    @employees = Employee.order(f_name: sort_direction)
+    respond_to do |format|
+      format.js
+    end
+  end
+
   def index
     @employees = Employee.all
+    respond_to do |format|
+      format.html
+      format.pdf do
+        render pdf: "Employees#{@employees.count}", template: "employees/index.html.erb"   # Excluding ".pdf" extension.
+      end
+    end
   end
 
   def show
+    respond_to do |format|
+      format.html
+      format.pdf do
+        render pdf: "Employee_#{@employee.id}", template: "employees/emp.html.erb"   # Excluding ".pdf" extension.
+      end
+    end
   end
 
   def new
@@ -48,9 +69,9 @@ class EmployeesController < ApplicationController
   def destroy
     begin
       @employee.destroy
-      flash[:notice] = "employee deleted successfully."
+      flash[:notice] = 'employee deleted successfully.'
     rescue ActiveRecord::DeleteRestrictionError => e
-      flash[:alert] = "Cannot delete employee. It has associated Bank account."
+      flash[:alert] = 'Cannot delete employee. It has associated Bank account.'
     end
     redirect_to employees_path
   end
@@ -63,6 +84,10 @@ class EmployeesController < ApplicationController
 
   def employee_params
     params.require(:employee).permit(:f_name, :l_name, :dob, :email, :address, :contact_no, :designation, :hire_date, :left_date, :in_hand_salary, :bonus_amount, :ctc, :department_id, :resume, bank_account_attributes: [:bank_name, :account_number, :ifsc_code])
+  end
+
+  def sort_direction
+    session[:sort_direction] = session[:sort_direction] == 'asc' ? 'desc' : 'asc'
   end
 
 end

@@ -6,6 +6,7 @@ class Department < ApplicationRecord
   validates :department_name, presence: true, uniqueness: true
 
   before_save :sanitize_data
+  
 
   def update_employee_count
     self.employee_count = employees.count
@@ -13,6 +14,7 @@ class Department < ApplicationRecord
   end
 
   private
+
   def sanitize_data
     self.department_name = department_name.squish
   end

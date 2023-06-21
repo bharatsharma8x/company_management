@@ -1,4 +1,6 @@
 class Employee < ApplicationRecord
+  belongs_to :user
+
   belongs_to :department
   has_many :periferals
   has_one_attached :resume
@@ -12,7 +14,7 @@ class Employee < ApplicationRecord
 
   before_save :sanitize_data
 
-  validates :f_name, :l_name, :dob, :email, :address, :contact_no, :hire_date,  presence: true
+  validates :f_name, :l_name, :dob, :email, :address, :contact_no, :hire_date, :department_id, presence: true
   validates :email, presence: true, uniqueness: true, format: { with: /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i }
   validate :dob_cannot_be_in_the_future
   validates :contact_no, uniqueness: true, numericality: { only_integer: true }, length: { minimum: 10 }
@@ -23,6 +25,7 @@ class Employee < ApplicationRecord
   after_destroy :update_department_employee_count
 
   private
+
   def update_department_employee_count
     department.update_employee_count
   end
@@ -36,9 +39,10 @@ class Employee < ApplicationRecord
   end
 
   def dob_cannot_be_in_the_future
-    errors.add(:dob, "cannot be in the future") if dob.present? && dob > Date.today
+    errors.add(:dob, 'cannot be in the future') if dob.present? && dob > Date.today
   end
 
+
   # check scopes
-  #  scope :find_by_name(name), -> { where("name LIKE ?", "%#{name}%")}
+  #  scope :find_by_name(name), -> { where('name LIKE ?', '%#{name}%')}
 end

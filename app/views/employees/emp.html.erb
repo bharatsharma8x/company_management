@@ -1,0 +1,97 @@
+<span>Generated at: </span>
+<%= Time.now%>
+<hr>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-lg">
+
+      <p>
+        <strong>First name: </strong>
+        <%= @employee.f_name %>
+      </p>
+
+      <p>
+        <strong>Last name: </strong>
+        <%= @employee.l_name %>
+      </p>
+
+      <p>
+        <strong>DOB: </strong>
+        <%= @employee.dob %>
+      </p>
+
+      <p>
+        <strong>Email: </strong>
+        <%= @employee.email %>
+      </p>
+
+      <p>
+        <strong>Address: </strong>
+        <%= @employee.address %>
+      </p>
+
+      <p>
+        <strong>Contact no: </strong>
+        <%= @employee.contact_no %>
+      </p>
+
+      <p>
+        <strong>Designation: </strong>
+        <%= @employee.designation %>
+      </p>
+
+      <p>
+        <strong>Hire date: </strong>
+        <%= @employee.hire_date %>
+      </p>
+
+      <p>
+        <strong>Left date: </strong>
+        <%= @employee.left_date %>
+      </p>
+
+      <p>
+        <strong>In hand salary: </strong>
+        <%= @employee.in_hand_salary %>
+      </p>
+
+      <p>
+        <strong>Bonus amount: </strong>
+        <%= @employee.bonus_amount %>
+      </p>
+
+      <p>
+        <strong>CTC: </strong>
+        <%= @employee.ctc %>
+      </p>
+
+      <p>
+        <strong>Department: </strong>
+        <%= @employee.department.try(:department_name) %>
+      </p>
+
+      <p>
+        <strong>Bank name: </strong>
+        <%= @employee.bank_account.try(:bank_name) %>
+      </p>
+
+      <p>
+        <strong>IFSC code: </strong>
+        <%= @employee.bank_account.try(:ifsc_code) %>
+      </p>
+
+      <p>
+        <strong>Account Number: </strong>
+        <%= @employee.bank_account.try(:account_number) %>
+      </p>
+    </div>
+
+    <div class="col-sm">
+      <%if @employee.resume.attached? %>
+        <%= image_tag @employee.resume, { class: 'doc_img' } %>
+      <%end%>
+    </div>
+
+
+  </div>
+</div>

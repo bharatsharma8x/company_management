@@ -6,7 +6,15 @@
   <table class="table">
     <tr>
       <th>id</th>
-      <th>name</th>
+      <th>name
+        <%= link_to periferals_path(order_by: "name", order: toggle_sort_order(params[:order], "name")) do %>
+          <% if params[:order_by] == "name" && params[:order] == "asc" %>
+            <i class="fa fa-arrow-up"></i>
+          <% else %>
+            <i class="fa fa-arrow-down"></i>
+          <% end %>
+        <% end %>
+      </th>
       <th>Category</th>
       <th>warranty_start_date</th>
       <th>warranty_end_date</th>

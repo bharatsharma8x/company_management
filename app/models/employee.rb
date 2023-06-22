@@ -13,7 +13,6 @@ class Employee < ApplicationRecord
   validates_associated :bank_account
 
   before_save :sanitize_data
-
   validates :f_name, :l_name, :dob, :email, :address, :contact_no, :hire_date, :department_id, presence: true
   validates :email, presence: true, uniqueness: true, format: { with: /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i }
   validate :dob_cannot_be_in_the_future

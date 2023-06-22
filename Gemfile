@@ -83,3 +83,6 @@ gem 'rolify'
 
 #Authorization
 gem 'cancancan'
+
+# fa fa icon
+gem "font-awesome-rails"

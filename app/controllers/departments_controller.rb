@@ -5,6 +5,15 @@ class DepartmentsController < ApplicationController
 
   def index
     @pagy, @departments = pagy(Department.all)
+    if params[:order_by].present?
+      order_by = params[:order_by]
+      order = params[:order] || 'asc'
+      if order == 'asc'
+        @departments = @departments.order(order_by)
+      elsif order == 'desc'
+        @departments = @departments.order(order_by => :desc)
+      end
+    end
   end
 
   def show

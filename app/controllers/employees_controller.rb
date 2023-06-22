@@ -24,6 +24,16 @@ class EmployeesController < ApplicationController
 
   def index
     @employees = Employee.all
+    
+    if params[:order_by].present?
+      order_by = params[:order_by]
+      order = params[:order] || 'asc'
+      if order == 'asc'
+        @employees = @employees.order(order_by)
+      elsif order == 'desc'
+        @employees = @employees.order(order_by => :desc)
+      end
+    end
 
     respond_to do |format|
       format.html

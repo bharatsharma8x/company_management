@@ -11,10 +11,26 @@
     <tr>
       <th>ID</th>
       <th>
-      F_Name
+        F_Name
+        <%= link_to employees_path(order_by: "f_name", order: toggle_sort_order(params[:order], "f_name")) do %>
+          <% if params[:order_by] == "f_name" && params[:order] == "asc" %>
+            <i class="fa fa-arrow-up"></i>
+          <% else %>
+            <i class="fa fa-arrow-down"></i>
+          <% end %>
+        <% end
+        %>
       </th>
       <th>L_Name</th>
-      <th>Email</th>
+      <th>Email
+      <%= link_to employees_path(order_by: "email", order: toggle_sort_order(params[:order], "email")) do %>
+        <% if params[:order_by] == "email" && params[:order] == "asc" %>
+          <i class="fa fa-arrow-up"></i>
+        <% else %>
+          <i class="fa fa-arrow-down"></i>
+        <% end %>
+      <% end %>
+      </th>
       <th>Designation</th>
       <th>Department</th>
       <th>EDIT</th>

@@ -96,13 +96,6 @@ ActiveRecord::Schema.define(version: 2023_06_15_084630) do
     t.index ["department_id"], name: "index_employees_on_department_id"
   end
 
-  create_table "holidays", force: :cascade do |t|
-    t.date "holiday"
-    t.string "title"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "periferals", force: :cascade do |t|
     t.string "name"
     t.text "description"

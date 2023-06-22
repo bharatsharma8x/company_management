@@ -8,7 +8,16 @@
   <table class="table">
     <tr>
       <th>ID</th>
-      <th>department_name</th>
+      <th>
+        Department_name
+        <%= link_to departments_path(order_by: "department_name", order: toggle_sort_order(params[:order], "department_name")) do %>
+          <% if params[:order_by] == "department_name" && params[:order] == "asc" %>
+            <i class="fa fa-arrow-up"></i>
+          <% else %>
+            <i class="fa fa-arrow-down"></i>
+          <% end %>
+        <% end %>
+      </th>
       <th>NO. of Employees</th>
       <th>EDIT</th>
       <th>DELETE</th>

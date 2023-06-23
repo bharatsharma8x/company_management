@@ -1,4 +1,6 @@
 class Allocate < ApplicationRecord
+  include StripSpacesConcern
+
   belongs_to :employee, optional: true
   belongs_to :department, optional: true
   belongs_to :periferal, optional: true

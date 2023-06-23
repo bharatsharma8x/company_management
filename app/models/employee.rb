@@ -1,4 +1,6 @@
 class Employee < ApplicationRecord
+  include StripSpacesConcern
+
   belongs_to :user
 
   belongs_to :department
@@ -12,7 +14,6 @@ class Employee < ApplicationRecord
   accepts_nested_attributes_for :bank_account
   validates_associated :bank_account
 
-  before_save :sanitize_data
   validates :f_name, :l_name, :dob, :email, :address, :contact_no, :hire_date, :department_id, presence: true
   validates :email, presence: true, uniqueness: true, format: { with: /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i }
   validate :dob_cannot_be_in_the_future
@@ -23,25 +24,16 @@ class Employee < ApplicationRecord
   after_update :update_department_employee_count
   after_destroy :update_department_employee_count
 
+  scope :search_by_name, ->(query) { where("f_name ILIKE :query OR email ILIKE :query", query: "%#{query}%") }
+
   private
 
   def update_department_employee_count
     department.update_employee_count
   end
 
-  def sanitize_data
-    self.f_name = f_name.squish
-    self.l_name = l_name.squish
-    self.email = email.squish
-    self.address = address.squish
-    self.designation = designation.squish
-  end
-
   def dob_cannot_be_in_the_future
     errors.add(:dob, 'cannot be in the future') if dob.present? && dob > Date.today
   end
 
-
-  # check scopes
-  #  scope :find_by_name(name), -> { where('name LIKE ?', '%#{name}%')}
 end

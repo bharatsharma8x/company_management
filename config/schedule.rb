@@ -19,9 +19,9 @@
 
 # Learn more: http://github.com/javan/whenever
 
-set :output, "log/cron.log"
-set :environment, "development"
+set :output, 'log/cron.log'
+set :environment, 'development'
 
 every '0 1 1 * *' do
-    rake "demo:calculate_salary"
+    rake 'demo:calculate_salary'
 end

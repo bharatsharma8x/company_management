@@ -1,4 +1,6 @@
 class Attendance < ApplicationRecord
+  include StripSpacesConcern
+
   belongs_to :employee
 
   validates :status, presence: true

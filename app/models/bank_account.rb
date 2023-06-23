@@ -1,4 +1,6 @@
 class BankAccount < ApplicationRecord
+  include StripSpacesConcern
+
   belongs_to :employee
 
   validates :bank_name, presence: true

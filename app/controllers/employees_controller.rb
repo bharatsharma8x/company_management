@@ -23,8 +23,17 @@ class EmployeesController < ApplicationController
   end
 
   def index
-    @employees = Employee.all
-    
+    if current_user.role == 'employee'
+      current_user_email = current_user.email
+      @employees = Employee.find_by(email: current_user_email)
+    else
+      if params[:search]
+        @employees = Employee.search_by_name(params[:search])
+      else
+        @employees = Employee.all
+      end
+    end
+
     if params[:order_by].present?
       order_by = params[:order_by]
       order = params[:order] || 'asc'
@@ -38,16 +47,17 @@ class EmployeesController < ApplicationController
     respond_to do |format|
       format.html
       format.pdf do
-        render pdf: "Employees#{@employees.count}", template: "employees/index.html.erb"   # Excluding ".pdf" extension.
+        render pdf: "Employees#{@employees.count}", template: 'employees/index.html.erb'   # Excluding ".pdf" extension.
       end
     end
+
   end
 
   def show
     respond_to do |format|
       format.html
       format.pdf do
-        render pdf: "Employee_#{@employee.id}", template: "employees/emp.html.erb"   # Excluding ".pdf" extension.
+        render pdf: "Employee_#{@employee.id}", template: 'employees/emp.html.erb'   # Excluding ".pdf" extension.
       end
     end
   end
@@ -94,7 +104,7 @@ class EmployeesController < ApplicationController
   end
 
   def employee_params
-    params.require(:employee).permit(:f_name, :l_name, :dob, :email, :address, :contact_no, :designation, :hire_date, :left_date, :in_hand_salary, :bonus_amount, :ctc, :department_id, :resume, bank_account_attributes: [:bank_name, :account_number, :ifsc_code])
+    params.require(:employee).permit(:f_name, :l_name, :dob, :email, :address, :contact_no, :designation, :hire_date, :left_date, :in_hand_salary, :bonus_amount, :ctc, :department_id, :resume, bank_account_attributes: %i[bank_name account_number ifsc_code])
   end
 
   def sort_direction

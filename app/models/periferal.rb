@@ -1,4 +1,6 @@
 class Periferal < ApplicationRecord
+  include StripSpacesConcern
+
   has_many :allocates
   has_one_attached :bill
 
@@ -13,5 +15,5 @@ class Periferal < ApplicationRecord
       self.warranty_end_date = warranty_start_date + warranty_duration_months.to_i.months
     end
   end
-  
+
 end

@@ -1,4 +1,6 @@
 class AttendancesController < ApplicationController
+  load_and_authorize_resource
+
   before_action :set_attendance, only: %i[show edit update destroy]
   include Pagy::Backend
 
@@ -8,9 +10,17 @@ class AttendancesController < ApplicationController
       month = Date.strptime(params[:start_][:month], '%m')
       start_date = month.beginning_of_month
       end_date = month.end_of_month
-      @pagy, @attendances = pagy(Attendance.where(employee_id: employee_id, check_in_time: start_date..end_date), items:5)
+      @pagy, @attendances = pagy(Attendance.where(employee_id: employee_id, check_in_time: start_date..end_date), items: 5)
     else
-      @pagy, @attendances = pagy(Attendance.all, items:5)
+
+      if current_user.role == 'employee'
+        current_user_email = current_user.email
+        emp = Employee.find_by(email: current_user_email)
+        @pagy, @attendances = pagy(Attendance.where(employee: emp), items: 5)
+      else
+        @pagy, @attendances = pagy(Attendance.all, items: 5)
+      end
+
     end
   end
 

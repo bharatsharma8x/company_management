@@ -36,7 +36,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'byebug', platforms: %i[mri mingw x64_mingw]
 end
 
 group :development do
@@ -47,7 +47,7 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
 
-  #preview email 21/06/2023
+  # preview email 21/06/2023
   gem 'letter_opener'
 
 end
@@ -61,7 +61,7 @@ group :test do
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 # Authentication
 gem 'devise'
@@ -69,20 +69,20 @@ gem 'devise'
 gem 'whenever', require: false
 
 gem 'rubocop', require: false
-gem "pagy", "~> 6.0"
+gem 'pagy', "~> 6.0"
 
-#Creating pdf
+# Creating pdf
 gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'
 
-#cors error resolve
+# cors error resolve
 gem 'rack-cors'
 
-#define role for User
+# define role for User
 gem 'rolify'
 
-#Authorization
+# Authorization
 gem 'cancancan'
 
 # fa fa icon
-gem "font-awesome-rails"
+gem 'font-awesome-rails'

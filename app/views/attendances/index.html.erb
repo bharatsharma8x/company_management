@@ -4,16 +4,18 @@
 
 <%= link_to "New Attendance", new_attendance_path %><br><br>
 
-<%= form_tag attendances_path, method: :get do %>
-  <%= label_tag :employee_id, "Employee:" %>
-  <%= select_tag :employee_id, options_for_select(Employee.all.map { |e| [e.f_name, e.id] }) %>
+<%if current_user.role == "admin"%>
+  <%= form_tag attendances_path, method: :get do %>
+    <%= label_tag :employee_id, "Employee:" %>
+    <%= select_tag :employee_id, options_for_select(Employee.all.map { |e| [e.f_name, e.id] }) %>
 
-  <%= label_tag :month, "Month:" %>
-  <%= select_month(Date.current, { prefix: 'start_', field_name: 'month' }) %>
+    <%= label_tag :month, "Month:" %>
+    <%= select_month(Date.current, { prefix: 'start_', field_name: 'month' }) %>
 
-
-  <%= submit_tag "Filter" %>
+    <%= submit_tag "Filter" %>
+  <% end %>
 <% end %>
+
 
 <div class="table-responsive">
   <%== pagy_nav(@pagy) if @pagy.pages > 1 %>
@@ -27,7 +29,7 @@
       <th>edit</th>
       <th>delete</th>
     </tr>
-    <%= render(@attendances) || "No match Found" %>
+    <%= render(@attendances) || "There are no data" %>
   </table>
   <%== pagy_nav(@pagy) if @pagy.pages > 1 %>
 </div>

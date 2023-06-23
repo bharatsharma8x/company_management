@@ -3,7 +3,13 @@ class AllocatesController < ApplicationController
   before_action :set_allocate, only: %i[show edit update destroy]
 
   def index
-    @allocates = Allocate.all
+    if current_user.role == 'employee'
+      current_user_email = current_user.email
+      emp = Employee.find_by(email: current_user_email)
+      @allocates = Allocate.where(employee: emp)
+    else
+      @allocates = Allocate.all
+    end
   end
 
   def show

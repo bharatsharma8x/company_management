@@ -8,37 +8,14 @@ class ApplicationController < ActionController::Base
   private
 
   def access_denied
-    flash[:alert] = "You are not authorized to access this page."
+    flash[:alert] = 'You are not authorized to access this page.'
     redirect_back(fallback_location: root_path)
   end
 
   protected
+
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:role, :name])
+    devise_parameter_sanitizer.permit(:sign_up, keys: %i[role name])
   end
 
 end
-# before_action :remove_whitespace
-
-# def sanitize_data(hash)
-#   result_hash = {}
-#   return hash unless hash.respond_to?(:keys)
-
-#   hash.keys.each do |key|
-#     result_hash[key] = hash[key].squish if hash[key].is_a?(String)
-#   end
-
-#   result_hash
-# end
-
-# def remove_whitespace
-#   params.keys.each do |key|
-#     if params[key].respond_to?(:each)
-#       params[key] = sanitize_data(params[key])
-#      elsif params[key].is_a?(String)
-#       params[key] = params[key].squish
-#      else
-#       params[key] = params[key]
-#      end
-#   end
-# end

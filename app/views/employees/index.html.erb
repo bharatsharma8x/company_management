@@ -3,10 +3,20 @@
   <h1>Employee List</h1>
 </div>
 
-<%= link_to "New Employee", new_employee_path %><br><br>
 
 <div class="table-responsive">
-  <td><%= link_to "PDF",employees_path(format: :pdf) %></td>
+
+  <%if current_user.role == "admin"%>
+    <%= link_to "New Employee", new_employee_path %><br><br>
+    <td><%= link_to "PDF",employees_path(format: :pdf) %></td>
+
+    <%= form_tag employees_path, method: :get do %>
+      <%= text_field_tag :search, params[:search], placeholder: "Search by name or email" %>
+      <%= submit_tag "Search" %>
+    <% end %>
+
+  <%end%>
+  
   <table class="table">
     <tr>
       <th>ID</th>
@@ -37,6 +47,6 @@
       <th>DELETE</th>
       <th>PDF</th>
     </tr>
-    <%= render(@employees) || "There are no products available." %>
+    <%= render(@employees) || "There are no Employee." %>
   </table>
 </div>

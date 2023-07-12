@@ -1,11 +1,11 @@
-Salary slip of  <%= @salary.employee.try(:f_name) %>!
+Salary slip of <%= @salary.employee.try(:f_name) %>!
 ===============================================
 
 Salary Details:
 --------------------------
 
 Employee Id : <%= @salary.employee_id %>
-Employee Name : <%= @salary.employee.try(:f_name) %>
+Employee Names : <%= @salary.employee.try(:f_name) %>
 Month : <%= @salary.month.strftime("%B") %>
 Total Days : <%= @salary.total_days %>
 Total Present : <%= @salary.present_days %>

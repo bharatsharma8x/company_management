@@ -2,7 +2,6 @@ class Employee < ApplicationRecord
   include StripSpacesConcern
 
   belongs_to :user
-
   belongs_to :department
   has_many :periferals
   has_one_attached :resume
@@ -20,17 +19,9 @@ class Employee < ApplicationRecord
   validates :contact_no, uniqueness: true, numericality: { only_integer: true }, length: { minimum: 10 }
   validates :in_hand_salary, :ctc, numericality: { only_integer: true }
 
-  after_create :update_department_employee_count
-  after_update :update_department_employee_count
-  after_destroy :update_department_employee_count
-
   scope :search_by_name, ->(query) { where("f_name ILIKE :query OR email ILIKE :query", query: "%#{query}%") }
 
   private
-
-  def update_department_employee_count
-    department.update_employee_count
-  end
 
   def dob_cannot_be_in_the_future
     errors.add(:dob, 'cannot be in the future') if dob.present? && dob > Date.today

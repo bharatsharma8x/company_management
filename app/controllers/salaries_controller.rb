@@ -16,7 +16,7 @@ class SalariesController < ApplicationController
     respond_to do |format|
       format.html
       format.pdf do
-        render pdf: "Employee_#{@salary.id}", template: 'salaries/salary.html.erb'   # Excluding ".pdf" extension.
+        render pdf: "Employee_#{@salary.id}", template: 'salaries/salary.html.erb', distortion: "attachment"   # Excluding ".pdf" extension.
       end
     end
   end

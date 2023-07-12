@@ -11,7 +11,7 @@
     <tr>
       <td><%= @department.id %></td>
       <td><%= @department.department_name %></td>
-      <td><%= @department.employee_count %></td>
+      <td><%= @department.employees.count %></td>
       <td><%= link_to "Edit", edit_department_path(@department.id) %></td>
       <td><%= link_to "Destroy", department_path(@department.id),
         method: :delete,
@@ -22,12 +22,12 @@
   <br>
   <h4>Employees in this department:</h4>
   <%if @employees.empty?%>
-  <p>No employees are there</p>
+    <p>No employees are there</p>
   <%else%>
-  <ul>
-    <% @employees.each do |employee| %>
-      <li><%= link_to employee.f_name, employee%></li>
-    <% end %>
-  </ul>
+    <ul>
+      <% @employees.each do |employee| %>
+        <li><%= link_to employee.f_name, employee%></li>
+      <% end %>
+    </ul>
   <%end%>
-</div>  
+</div>

@@ -10,12 +10,12 @@
 
   <div>
     <%= form.label :employee %><br>
-    <%= form.collection_select :employee_id, [], :id, :f_name, {}, { id: 'employee-select' } %>
+    <%= form.collection_select :employee_id, [], :id, :f_name, {}, { id: 'employee-select'} %>
       <% @allocate.errors.full_messages_for(:employee_id).each do |message| %>
       <div style="color:red"><%= message %></div>
     <% end %>
   </div><br>
-
+``
   <div>
     <%= form.label :periferal %><br>
     <%= form.collection_select(:periferal_id, Periferal.all, :id, :name, prompt: true)%>

@@ -1,27 +1,91 @@
-<p>Generated at: </p>
-<%= Time.now %>
-<h1><center>Salary</center></h1><br><br>
-<div class="table-responsive">
-  <table class="table">
-    <tr>
-      <th>Id</th>
-      <th>Employee_id</th>
-      <th>Month</th>
-      <th>Total days</th>
-      <th>Present days</th>
-      <th>Leaves</th>
-      <th>Absent</th>
-      <th>Salary</th>
-    </tr>
-    <tr>
-      <td><%= @salary.id %></td>
-      <td><%= @salary.employee.try(:f_name) %></td>
-      <td><%= @salary.month.strftime("%B") %></td>
-      <td><%= @salary.total_days %></td>
-      <td><%= @salary.present_days %></td>
-      <td><%= @salary.leaves %></td>
-      <td><%= @salary.absents %></td>
-      <td><%= @salary.salary %></td>
-
-    </tr>
-  </table>
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    @page {
+      size: A4;
+      margin: 0;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    .container {
+      width: 100%;
+    }
+    h1 {
+      text-align: center;
+      margin-top: 20px;
+    }
+    table {
+      width: 80%;
+      margin: 0 auto;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 8px;
+      text-align: left;
+    }
+    th {
+      background-color: #f2f2f2;
+      width: 120px;
+      padding-left: 50px
+    }
+    td{
+      padding-left: 200px
+    }
+    .signature {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 300px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Employee Salary Details</h1>
+    <table>
+      <tr>
+        <th>ID</th>
+        <td><%= @salary.id %></td>
+      </tr>
+      <tr>
+        <th>Employee Name</th>
+        <td><%= @salary.employee.try(:f_name) %></td>
+      </tr>
+      <tr>
+        <th>Month</th>
+        <td><%= @salary.month.strftime("%B") %></td>
+      </tr>
+      <tr>
+        <th>Total Days</th>
+        <td><%= @salary.total_days %></td>
+      </tr>
+      <tr>
+        <th>Present Days</th>
+        <td><%= @salary.present_days %></td>
+      </tr>
+      <tr>
+        <th>Leaves</th>
+        <td><%= @salary.leaves %></td>
+      </tr>
+      <tr>
+        <th>Absents</th>
+        <td><%= @salary.absents %></td>
+      </tr>
+      <tr>
+        <th>Salary</th>
+        <td><%= @salary.salary %></td>
+      </tr>
+    </table>
+  </div>
+  <br>
+  <br>
+  <div class="signature">
+    <span>Signature: ________________________</span>
+  </div>
+</body>
+</html>

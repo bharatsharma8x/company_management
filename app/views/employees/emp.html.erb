@@ -87,7 +87,7 @@
     </div>
 
     <div class="col-sm">
-      <%if @employee.resume.attached? %>
+      <% if @employee.resume.attached? %>
         <%= image_tag @employee.resume, { class: 'doc_img' } %>
       <%end%>
     </div>

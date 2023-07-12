@@ -13,36 +13,27 @@
   </head>
 
   <body>
-     <hr>
+    <hr>
     <div style="display:flex; ">
 
       <div style="margin-right:20px;" ><%= link_to "Home", root_path %> </div>
       <% if user_signed_in? %>
-      <div style="margin-right:20px;" ><%= link_to "Employee", employees_path %> </div>
-      <%end%>
+        <div style="margin-right:20px;" ><%= link_to "Employee", employees_path %> </div>
 
-      <% if user_signed_in? %>
         <% if current_user.role == "admin" %>
           <div style="margin-right:20px;" ><%= link_to "Department", departments_path %> </div>
-        <%end%>
-      <%end%>
+         <%end%>
 
-      <% if user_signed_in? %>
         <% if current_user.role == "admin" %>
          <div style="margin-right:20px;" ><%= link_to "Periferal", periferals_path %> </div>
         <%end%>
-      <%end%>
 
-      <% if user_signed_in? %>
         <div style="margin-right:20px;" ><%= link_to "Allocate", allocates_path %> </div>
-      <%end%>
 
-      <% if user_signed_in? %>
         <div style="margin-right:20px;" ><%= link_to "Attendance", attendances_path %> </div>
-      <%end%>
 
-      <% if user_signed_in? %>
         <div style="margin-right:20px;" ><%= link_to "Salary", salaries_path %> </div>
+
       <%end%>
 
       <div style="margin-left:500px;" >

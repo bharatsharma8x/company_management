@@ -47,7 +47,7 @@ class EmployeesController < ApplicationController
     respond_to do |format|
       format.html
       format.pdf do
-        render pdf: "Employees#{@employees.count}", template: 'employees/index.html.erb'   # Excluding ".pdf" extension.
+        render pdf: "Employees#{@employees.count}", template: 'employees/index.html.erb', disposition: 'attachment'   # Excluding ".pdf" extension.
       end
     end
 
@@ -57,7 +57,7 @@ class EmployeesController < ApplicationController
     respond_to do |format|
       format.html
       format.pdf do
-        render pdf: "Employee_#{@employee.id}", template: 'employees/emp.html.erb'   # Excluding ".pdf" extension.
+        render pdf: "Employee_#{@employee.id}", template: 'employees/emp.html.erb', disposition: 'attachment'   # Excluding ".pdf" extension.
       end
     end
   end

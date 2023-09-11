@@ -86,3 +86,6 @@ gem 'cancancan'
 
 # fa fa icon
 gem 'font-awesome-rails'
+
+# "rspecs "
+gem 'rspec-rails'

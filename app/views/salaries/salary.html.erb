@@ -1,91 +1,129 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <style>
-    @page {
-      size: A4;
-      margin: 0;
-    }
-    body {
-      font-family: Arial, sans-serif;
-      margin: 20px;
-    }
-    .container {
-      width: 100%;
-    }
-    h1 {
-      text-align: center;
-      margin-top: 20px;
-    }
-    table {
-      width: 80%;
-      margin: 0 auto;
-      border-collapse: collapse;
-      margin-bottom: 20px;
-    }
-    th, td {
-      border: 1px solid #ccc;
-      padding: 8px;
-      text-align: left;
-    }
-    th {
-      background-color: #f2f2f2;
-      width: 120px;
-      text-align: center;
-    }
-    td{
-      text-align: center;
-    }
-    .signature {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      width: 300px;
-    }
-  </style>
-</head>
-<body>
-  <div class="container">
-    <h1>Employee Salary Details</h1>
-    <table>
-      <tr>
-        <th>ID</th>
-        <td><%= @salary.id %></td>
-      </tr>
-      <tr>
-        <th>Employee Name</th>
-        <td><%= @salary.employee.try(:f_name) %></td>
-      </tr>
-      <tr>
-        <th>Month</th>
-        <td><%= @salary.month.strftime("%B") %></td>
-      </tr>
-      <tr>
-        <th>Total Days</th>
-        <td><%= @salary.total_days %></td>
-      </tr>
-      <tr>
-        <th>Present Days</th>
-        <td><%= @salary.present_days %></td>
-      </tr>
-      <tr>
-        <th>Leaves</th>
-        <td><%= @salary.leaves %></td>
-      </tr>
-      <tr>
-        <th>Absents</th>
-        <td><%= @salary.absents %></td>
-      </tr>
-      <tr>
-        <th>Salary</th>
-        <td><%= @salary.salary %></td>
-      </tr>
-    </table>
+  <head>
+    <title>Salary Slip</title>
+    <style>
+
+      .container {
+        width: 100%;
+        margin: 0 auto;
+      }
+
+      .box {
+        border: 1px solid black;
+        padding: 10px;
+        margin-bottom: 20px;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+
+      th, td {
+        border: 1px solid black;
+        padding: 8px;
+        text-align: left;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="box">
+        <table>
+          <tr>
+            <td colspan="4">Technomatz IT Solutions Pvt. Ltd.</td>
+          </tr>
+          <tr>
+            <td colspan="4">Salary Slip For the Month Of <%= Date::MONTHNAMES[@salary.month.month]%> <%= @salary.month.year%></td>
+          </tr>
+          <tr>
+            <td colspan="4">2nd Floor ,Plot No. 159, Sch No. 54, PU-4 Commercial, Vijay Nagar
+                            Indore -452001
+                            Email: hr@technomatz.com
+                            Contact No: 0731- 4100713
+            </td>
+          </tr>
+          <tr>
+            <th>Employee Name:</th>
+            <td><%= @salary.employee.try(:f_name) %></td>
+            <th>Pay Period:</th>
+            <td><%= @salary.month.year%></td>
+          </tr>
+
+          <tr>
+            <th>Pay Cycle:</th>
+            <td><%= @salary.total_days%></td>
+            <th>Branch</th>
+            <td><%= @salary.employee.department.department_name%></td>
+          </tr>
+
+          <tr>
+            <th>Date Of Joining</th>
+            <td><%= @salary.employee.hire_date%></td>
+            <th>Designation</th>
+            <td><%= @salary.employee.designation%></td>
+          </tr>
+
+          <tr>
+            <th>Bank</th>
+            <td><%= @salary.employee.bank_account.bank_name%></td>
+            <th>Pay Month</th>
+            <td><%= Date::MONTHNAMES[@salary.month.month]%></td>
+          </tr>
+          <tr>
+            <th>Total Paid Days</th>
+            <td><%= @salary.present_days%></td>
+            <th>LOP</th>
+            <td>0</td>
+          </tr>
+
+          <tr>
+            <td colspan="4">&nbsp;</td>
+          </tr>
+          <tr>
+            <td colspan="2">Earning</td>
+            <td colspan="2">Deduction</td>
+          </tr>
+
+          <tr>
+            <th>Description</th>
+            <th>Amount</th>
+            <th>Description</th>
+            <th>Amount</th>
+          </tr>
+          <tr>
+            <th>Basic Pay</th>
+            <td><%= @salary.employee.salary%></td>
+            <th>Income Tax</th>
+            <td>0</td>
+          </tr>
+          <tr>
+            <th>HRA</th>
+            <td><%= 3600%></td>
+            <th>Prof. Tax</th>
+            <td>0</td>
+          </tr>
+          <tr>
+            <th>Allowance</th>
+            <td><%=2400%></td>
+            <th>Leave</th>
+            <td>0</td>
+          </tr>
+          <tr>
+            <th>Total Earning</th>
+            <td><strong><%= number_with_precision(@salary.salary, precision: 1) %></strong></td>
+            <th>Total Deduction</th>
+            <td>----</td>
+          </tr>
+          <tr>
+            <td colspan="4">Net Salary- <%= @salary.salary.to_i.to_words.capitalize%> only</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+     <div class="signature">
+    <span>*This is a Computer generated Pay slip, Signature or Seal not required.</span>
   </div>
-  <br>
-  <br>
-  <div class="signature">
-    <span>Signature: ________________________</span>
-  </div>
-</body>
+  </body>
 </html>

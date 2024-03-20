@@ -1,2 +1,7 @@
 <%= link_to "Back", attendances_path %> <br>
+<%= form_for Attendance.new, url: {action: :import}, html: {multipart: true} do |f| %>
+  <%= f.file_field :file %>
+  <%= f.submit "Upload" %>
+<% end %>
+</br>
 <%= render "form", attendance: @attendance %>

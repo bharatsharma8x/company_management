@@ -12,6 +12,14 @@ Rails.application.routes.draw do
   resources :departments
   resources :periferals
   resources :allocates
-  resources :attendances
-  resources :salaries
+  resources :salaries do
+  collection do
+    post 'calculate_salary'
+  end
+end
+  resources :attendances do
+    collection do
+      post 'import'
+    end
+  end
 end

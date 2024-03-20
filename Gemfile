@@ -89,3 +89,9 @@ gem 'font-awesome-rails'
 
 # "rspecs "
 gem 'rspec-rails'
+
+gem 'roo'
+
+gem 'sidekiq'
+
+gem 'numbers_and_words'

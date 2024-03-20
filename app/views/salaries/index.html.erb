@@ -17,19 +17,19 @@
     <% if @salaries.empty?%>
       <p><center>No Data</center></p><br><br>
     <% else%>
-    <% @salaries.each do |salary| %>
-    <tr>
-      <td><%= salary.id %></td>
-      <td><%= salary.employee.try(:f_name) %></td>
-      <td><%= salary.month.strftime("%B") %></td>
-      <td><%= salary.total_days %></td>
-      <td><%= salary.present_days %></td>
-      <td><%= salary.leaves %></td>
-      <td><%= salary.absents %></td>
-      <td><%= salary.salary %></td>
-      <td><%= link_to "PDF",salary_path(salary, format: :pdf) %></td>
-    </tr>
-
-    <% end %>
+      <% @salaries.each do |salary| %>
+        <tr>
+          <td><%= salary.id %></td>
+          <td><%= salary.employee.try(:f_name) %></td>
+          <td><%= salary.month.strftime("%B") %></td>
+          <td><%= salary.total_days %></td>
+          <td><%= salary.present_days %></td>
+          <td><%= salary.leaves %></td>
+          <td><%= salary.absents %></td>
+          <td><%= number_with_precision(salary.salary, precision: 1) %></td>
+          <td><%= link_to "Salary Slip",salary_path(salary, format: :pdf) %></td>
+        </tr>
+      <% end %>
     <% end %>
   </table>
+</div>

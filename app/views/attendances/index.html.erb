@@ -33,3 +33,5 @@
   </table>
   <%== pagy_nav(@pagy) if @pagy.pages > 1 %>
 </div>
+
+<%= button_to "Calculate Salary", calculate_salary_salaries_path, method: :post %>

@@ -86,12 +86,11 @@ ActiveRecord::Schema.define(version: 2023_06_25_121522) do
     t.string "designation"
     t.date "hire_date"
     t.date "left_date"
+    t.integer "salary"
     t.integer "ctc"
     t.bigint "department_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "in_hand_salary"
-    t.integer "bonus_amount"
     t.index ["department_id"], name: "index_employees_on_department_id"
   end
 

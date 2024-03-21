@@ -25,22 +25,49 @@
         padding: 8px;
         text-align: left;
       }
+
+      .heading {
+        text-align: center;
+        font-size: 40px;
+        font-weight: bold;
+        color: #ffffff;
+        background-color: #1f4e78;
+      }
+
+      .address {
+        text-align: center;
+        font-weight: bold;
+        background-color: white;
+      }
+
+      .middle-headings{
+        font-size: 32px;
+        font-weight: bold;
+        color: #ffffff;
+        background-color: #305496;
+      }
+
+      .net-salary {
+        background-color: #305496;
+        font-weight: bold;
+        color: #ffffff;
+      }
     </style>
   </head>
   <body>
     <div class="container">
       <div class="box">
-        <table>
+        <table style="background-color: #8ea9db">
           <tr>
-            <td colspan="4">Technomatz IT Solutions Pvt. Ltd.</td>
+            <td colspan="4" class="heading">Technomatz IT Solutions Pvt. Ltd.</td>
           </tr>
           <tr>
-            <td colspan="4">Salary Slip For the Month Of <%= Date::MONTHNAMES[@salary.month.month]%> <%= @salary.month.year%></td>
+            <td colspan="4" style="text-align: center; font-weight: bold;" >Salary Slip For the Month Of <%= Date::MONTHNAMES[@salary.month.month]%> <%= @salary.month.year%></td>
           </tr>
           <tr>
-            <td colspan="4">2nd Floor ,Plot No. 159, Sch No. 54, PU-4 Commercial, Vijay Nagar
-                            Indore -452001
-                            Email: hr@technomatz.com
+            <td colspan="4" class="address">2nd Floor ,Plot No. 159, Sch No. 54, PU-4 Commercial, Vijay Nagar</br>
+                            Indore -452001</br>
+                            Email: hr@technomatz.com</br>
                             Contact No: 0731- 4100713
             </td>
           </tr>
@@ -79,14 +106,14 @@
           </tr>
 
           <tr>
-            <td colspan="4">&nbsp;</td>
+            <td colspan="4" style="background-color: white">&nbsp;</td>
           </tr>
           <tr>
-            <td colspan="2">Earning</td>
-            <td colspan="2">Deduction</td>
+            <td colspan="2" class="middle-headings">Earning</td>
+            <td colspan="2" class="middle-headings">Deduction</td>
           </tr>
 
-          <tr>
+          <tr style="background-color: #d9e1f2">
             <th>Description</th>
             <th>Amount</th>
             <th>Description</th>
@@ -114,15 +141,15 @@
             <th>Total Earning</th>
             <td><strong><%= number_with_precision(@salary.salary, precision: 1) %></strong></td>
             <th>Total Deduction</th>
-            <td>----</td>
+            <td style="font-weight: bold;">----</td>
           </tr>
           <tr>
-            <td colspan="4">Net Salary- <%= @salary.salary.to_i.to_words.capitalize%> only</td>
+            <td colspan="4" class="net-salary">Net Salary- <%= @salary.salary.to_i.to_words.capitalize%> only</td>
           </tr>
         </table>
       </div>
     </div>
-     <div class="signature">
+     <div class="signature" style="text-align: center">
     <span>*This is a Computer generated Pay slip, Signature or Seal not required.</span>
   </div>
   </body>

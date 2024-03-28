@@ -74,16 +74,8 @@
 
   <div>
     <%= form.label :in_hand_salary %><br>
-    <%= form.number_field :in_hand_salary, min: 0 %>
-    <% @employee.errors.full_messages_for(:in_hand_salary).each do |message| %>
-      <div style="color:red"><%= message %></div>
-    <% end %>
-  </div><br>
-
-  <div>
-    <%= form.label :bonus_amount %><br>
-    <%= form.number_field :bonus_amount, min: 0 %>
-    <% @employee.errors.full_messages_for(:bonus_amount).each do |message| %>
+    <%= form.number_field :salary, min: 0 %>
+    <% @employee.errors.full_messages_for(:salary).each do |message| %>
       <div style="color:red"><%= message %></div>
     <% end %>
   </div><br>

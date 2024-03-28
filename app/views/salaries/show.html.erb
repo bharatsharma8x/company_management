@@ -102,7 +102,7 @@
             <th>Total Paid Days</th>
             <td><%= @salary.present_days%></td>
             <th>LOP</th>
-            <td><%=lop%></td>
+            <td>0</td>
           </tr>
 
           <tr>
@@ -123,28 +123,28 @@
             <th>Basic Pay</th>
             <td><%= @salary.employee.salary%></td>
             <th>Income Tax</th>
-            <td><%= income_tax %></td>
+            <td>0</td>
           </tr>
           <tr>
             <th>HRA</th>
-            <td><%= hra %></td>
+            <td><%= 3600%></td>
             <th>Prof. Tax</th>
-            <td><%= prof_tax %></td>
+            <td>0</td>
           </tr>
           <tr>
             <th>Allowance</th>
-            <td><%= allowance %></td>
+            <td><%=2400%></td>
             <th>Leave</th>
-            <td><%= @salary.leaves %></td>
+            <td>0</td>
           </tr>
           <tr>
             <th>Total Earning</th>
-            <td><strong><%= (@salary.salary).round %></strong></td>
+            <td><strong><%= number_with_precision(@salary.salary, precision: 1) %></strong></td>
             <th>Total Deduction</th>
-            <td style="font-weight: bold;"><%=total_deduction%></td>
+            <td style="font-weight: bold;">----</td>
           </tr>
           <tr>
-            <td colspan="4" class="net-salary">Net Salary- <%= (@salary.salary - total_deduction).to_i.to_words.capitalize%> only</td>
+            <td colspan="4" class="net-salary">Net Salary- <%= @salary.salary.to_i.to_words.capitalize%> only</td>
           </tr>
         </table>
       </div>

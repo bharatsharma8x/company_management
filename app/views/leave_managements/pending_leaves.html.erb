@@ -1,0 +1,32 @@
+<!-- app/views/leave_managements/pending_leaves.html.erb -->
+<h1>Employee Leave Requests</h1>
+<table class="table table-striped">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Employee Name</th>
+      <th scope="col">Leave Type</th>
+      <th scope="col">Start Date</th>
+      <th scope="col">End Date</th>
+      <th scope="col">Status</th>
+      <th scope="col">Action</th>
+      <th scope="col">Reason for Rejection</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @pending_leaves.each do |leave| %>
+      <tr>
+        <td><%= leave.employee.f_name %></td>
+        <td><%= leave.leave_type %></td>
+        <td><%= leave.start_date %></td>
+        <td><%= leave.end_date %></td>
+        <td><%= leave.status %></td>
+        <td>
+          <% if leave.pending? %>
+            <%= link_to 'Approve', approve_employee_leave_management_path(leave.employee, leave), method: :patch, class: 'btn btn-success' %>
+            <%= link_to 'Reject', reject_employee_leave_management_path(leave.employee, leave), method: :patch, class: 'btn btn-danger' %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

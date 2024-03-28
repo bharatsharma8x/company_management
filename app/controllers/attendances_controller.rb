@@ -1,3 +1,4 @@
+require 'fileutils'
 class AttendancesController < ApplicationController
   load_and_authorize_resource
 
@@ -55,6 +56,32 @@ class AttendancesController < ApplicationController
   def destroy
     @attendance.destroy
     redirect_to attendances_url, notice: 'Attendance was successfully destroyed.'
+  end
+
+  def import
+    uploaded_file = params[:attendance][:file]
+
+    if uploaded_file.present?
+      filename = SecureRandom.uuid + ".xlsx"  # Generate unique filename
+      directory = Rails.root.join("public", "uploads")
+      FileUtils.mkdir_p(directory) unless File.directory?(directory)  # Create directory if it doesn't exist
+      filepath = File.join(directory, filename)
+      File.open(filepath, 'wb') do |file|
+        file.write(uploaded_file.read)
+      end
+      # Schedule the worker with the persistent file path
+      ExcelImportWorker.perform_async(filepath.to_s)
+
+      flash[:notice] = "Excel import job has been queued."
+      redirect_to attendances_path, notice: "Data import job has been queued."
+    else
+      flash[:error] = "Please select a file to upload."
+      render :new
+    end
+
+    sleep(5)
+    # Delete uploaded file after enqueuing worker
+    File.delete(filepath) if File.exist?(filepath)
   end
 
   private

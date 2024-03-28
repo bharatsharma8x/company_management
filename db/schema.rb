@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_06_25_121522) do
+ActiveRecord::Schema.define(version: 2024_03_22_104323) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -94,6 +94,17 @@ ActiveRecord::Schema.define(version: 2023_06_25_121522) do
     t.index ["department_id"], name: "index_employees_on_department_id"
   end
 
+  create_table "leave_managements", force: :cascade do |t|
+    t.bigint "employee_id"
+    t.string "leave_type"
+    t.date "start_date"
+    t.date "end_date"
+    t.string "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["employee_id"], name: "index_leave_managements_on_employee_id"
+  end
+
   create_table "periferals", force: :cascade do |t|
     t.string "name"
     t.text "description"
@@ -159,4 +170,5 @@ ActiveRecord::Schema.define(version: 2023_06_25_121522) do
   add_foreign_key "attendances", "employees"
   add_foreign_key "bank_accounts", "employees"
   add_foreign_key "employees", "departments"
+  add_foreign_key "leave_managements", "employees"
 end

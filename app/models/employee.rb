@@ -9,6 +9,7 @@ class Employee < ApplicationRecord
   has_many :allocates
   has_many :attendance
   has_many :salaries
+  has_many :leave_managements
 
   accepts_nested_attributes_for :bank_account
   validates_associated :bank_account
@@ -19,6 +20,18 @@ class Employee < ApplicationRecord
   validates :contact_no, uniqueness: true, numericality: { only_integer: true }, length: { minimum: 10 }
 
   scope :search_by_name, ->(query) { where("f_name ILIKE :query OR email ILIKE :query", query: "%#{query}%") }
+
+  def apply_leave(start_date, end_date, leave_type)
+    leaves.create(start_date: start_date, end_date: end_date, leave_type: leave_type, status: 'pending')
+  end
+
+  def remaining_leaves
+    total_leaves - leaves.where(status: 'approved').sum(:duration)
+  end
+
+  def leave_history
+    leaves.order(start_date: :desc)
+  end
 
   private
 

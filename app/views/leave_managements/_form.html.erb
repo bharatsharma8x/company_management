@@ -1,0 +1,41 @@
+<%= form_with(model: [@employee, @leave_management], local: true) do |form| %>
+  <% if @leave_management.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@leave_management.errors.count, "error") %> prohibited this leave management from being saved:</h2>
+
+      <ul>
+        <% @leave_management.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :leave_type %>
+    <%= form.select :leave_type, LeaveManagement.leave_types.values %>
+  </div>
+
+  <div class="field">
+    <%= form.label :start_date %>
+    <%= form.date_field :start_date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :end_date %>
+    <%= form.date_field :end_date %>
+  </div>
+
+  <% if current_user.admin? %>
+    <div class="field">
+      <%= form.label :status %>
+      <%= form.select :status, LeaveManagement.statuses.values %>
+    </div>
+  <% else %>
+    <%= form.hidden_field :status, value: "pending" %>
+  <% end %>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

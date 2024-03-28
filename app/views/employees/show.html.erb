@@ -85,6 +85,7 @@
         <%= image_tag @employee.resume, { class: 'doc_img' } %>
       <%end%>
       <br> <br> <br>
+      <%= link_to "Leaves", employee_leave_managements_path(@employee.id) %>
       <%= link_to "Edit", edit_employee_path(@employee.id) %>
       <%= link_to "Destroy", employee_path(@employee.id),
         method: :delete,

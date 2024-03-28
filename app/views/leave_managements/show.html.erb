@@ -1,0 +1,22 @@
+<p>
+  <strong>Leave Type:</strong>
+  <%= @leave_management.leave_type %>
+</p>
+
+<p>
+  <strong>Start Date:</strong>
+  <%= @leave_management.start_date %>
+</p>
+
+<p>
+  <strong>End Date:</strong>
+  <%= @leave_management.end_date %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @leave_management.status %>
+</p>
+
+<%= link_to 'Edit', edit_employee_leave_management_path(@employee, @leave_management) %> |
+<%= link_to 'Back', employee_leave_managements_path(@employee) %>

@@ -1,0 +1,28 @@
+<h1 class="text-center">All Leave Managements</h1>
+
+<table class="table table-bordered table-striped text-center">
+  <thead class="thead-dark">
+    <tr>
+      <th>Leave Type</th>
+      <th>Start Date</th>
+      <th>End Date</th>
+      <th>Status</th>
+      <th colspan="3">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @leave_managements.each do |leave_management| %>
+      <tr>
+        <td><%= leave_management.leave_type %></td>
+        <td><%= leave_management.start_date %></td>
+        <td><%= leave_management.end_date %></td>
+        <td><%= leave_management.status %></td>
+        <td><%= link_to 'Show', employee_leave_management_path(@employee, leave_management), class: "btn btn-primary btn-sm" %></td>
+        <td><%= link_to 'Edit', edit_employee_leave_management_path(@employee, leave_management), class: "btn btn-secondary btn-sm" %></td>
+        <td><%= link_to 'Destroy', employee_leave_management_path(@employee, leave_management), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-sm" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'New Leave Management', new_employee_leave_management_path(@employee), class: "btn btn-success" %>

@@ -1,0 +1,2 @@
+module LeaveManagementsHelper
+end
